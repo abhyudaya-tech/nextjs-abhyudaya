@@ -1,0 +1,102 @@
+import Navbar from '@/app/components/Navbar'
+import Footer from '@/app/components/Footer'
+import Image from 'next/image'
+
+const initiatives = [
+    {
+        title: '#TechForGood',
+        description: 'An initiative where technology is harnessed to solve cultural, social, environmental, and economic challenges, by bridging innovation with social impact.',
+        image: '/initiatives/tech-for-good.png',
+        projects: [
+            { title: 'Gnana Sangama', description: 'A digital literacy workshop empowering students', image: '/projects/gnana-sangama.jpg' },
+            { title: 'Prajnanam', description: 'Tech-driven mentoring and community forums', image: '/projects/prajnanam.jpg' },
+        ],
+    },
+    {
+        title: 'ಸಂಸ್ಕೃತಿ ಸಹಲ್',
+        description: 'Samskruti Sahal celebrates cultural diversity and heritage, inviting individuals on a journey through traditional arts, music, and history.',
+        image: '/initiatives/samskruthi-sahal.png',
+        projects: [
+            { title: 'Goushala Visits', description: 'Caring for sacred cows and animal welfare', image: '/projects/goushala.jpg' },
+            { title: 'Vanavasi Ashram Tours', description: 'Exploring tribal heritage in local ashrams', image: '/projects/vanavasi.jpg' },
+        ],
+    },
+    {
+        title: 'ಯuva ಸಂವಾದ',
+        description: 'Yuva Samvada creates a space for young people to engage in dialogue, exchange ideas, and take action on cultural, social, environmental, and economic issues.',
+        image: '/initiatives/yuva-samvaada.png',
+        projects: [
+            { title: 'Abhyudaya Youth Parliament', description: 'Platform to debate and shape public thought', image: '/projects/youth-parliament.jpg' },
+            { title: 'Abhyudaya Young Leaders Dialogue', description: 'Leadership, innovation & policy engagement', image: '/projects/young-leaders.jpg' },
+        ],
+    },
+]
+
+export default function InitiativesPage() {
+    return (
+        <>
+            <Navbar />
+
+            <main className="bg-white py-16">
+                <div className="max-w-5xl mx-auto px-4 space-y-20">
+                    <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
+                        Our Initiatives
+                    </h1>
+
+                    {initiatives.map((initiative, index) => (
+                        <section key={index}>
+                            {/* Description Section with BG */}
+                            <div className="bg-orange-50 rounded-xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-evenly">
+                                {/* Image Section */}
+                                <div className="w-full sm:w-1/8 sm:mr-4 mb-4 sm:mb-0">
+                                    <img
+                                        src={initiative.image}
+                                        alt={initiative.title}
+                                        className="w-full h-auto rounded-lg object-cover"
+                                    />
+                                </div>
+
+                                {/* Text Section */}
+                                <div className="w-full sm:w-4/6">
+                                    <h2 className="text-3xl font-semibold text-gray-800 mb-2 text-left">
+                                        {initiative.title}
+                                    </h2>
+                                    <p className="text-gray-700 text-left">
+                                        {initiative.description}
+                                    </p>
+                                </div>
+                            </div>
+
+
+
+                            {/* Project Grid - White BG */}
+                            <div className="grid md:grid-cols-3 gap-8">
+                                {initiative.projects.map((project, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="border border-gray-200 rounded-xl p-6 text-center"
+                                    >
+                                        <div className="relative w-full h-40 mb-4">
+                                            <Image
+                                                src={project.image}
+                                                alt={project.title}
+                                                fill
+                                                className="object-cover rounded"
+                                            />
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                                            {project.title}
+                                        </h3>
+                                        <p className="text-gray-600 text-sm">{project.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    ))}
+                </div>
+            </main>
+
+            <Footer />
+        </>
+    )
+}
