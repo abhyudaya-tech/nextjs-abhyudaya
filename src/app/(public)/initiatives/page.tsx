@@ -8,8 +8,8 @@ const initiatives = [
         description: 'An initiative where technology is harnessed to solve cultural, social, environmental, and economic challenges, by bridging innovation with social impact.',
         image: '/initiatives/tech-for-good.png',
         projects: [
-            { title: 'Gnana Sangama', description: 'A digital literacy workshop empowering students', image: '/projects/gnana-sangama.jpg' },
-            { title: 'Prajnanam', description: 'Tech-driven mentoring and community forums', image: '/projects/prajnanam.jpg' },
+            { title: 'Prajnanam', description: 'A digital platform uniting diverse cultural & social organizations - offering technical support, sharing event updates, insightful blogs, and interactive \'Play & Learn\' experiences to nurture knowledge, creativity, and community engagement.', image: '/initiatives/prajnanam.png' },
+            { title: 'Gnana Sangama', description: 'An application designed to bring together the richness of Bharatiya culture, traditions, and values in one place. It serves as a trusted source for learning, exploration, and collaboration.', image: '/initiatives/gnana-sangama.png' },
         ],
     },
     {
@@ -17,8 +17,8 @@ const initiatives = [
         description: 'Samskruti Sahal celebrates cultural diversity and heritage, inviting individuals on a journey through traditional arts, music, and history.',
         image: '/initiatives/samskruthi-sahal.png',
         projects: [
-            { title: 'Goushala Visits', description: 'Caring for sacred cows and animal welfare', image: '/projects/goushala.jpg' },
-            { title: 'Vanavasi Ashram Tours', description: 'Exploring tribal heritage in local ashrams', image: '/projects/vanavasi.jpg' },
+            { title: 'Historical Heritage Tours', description: 'Explore timeless tales carved in stone through guided visits to ancient temples, forts, and monuments.', image: '/initiatives/historical-heritage.png' },
+            { title: 'Goushala & Gou Economy', description: 'Experience the sacred bond with cows and discover the sustainable wealth of the Gou-based economy.', image: '/initiatives/goushala.png' },
         ],
     },
     {
@@ -26,8 +26,8 @@ const initiatives = [
         description: 'Yuva Samvada creates a space for young people to engage in dialogue, exchange ideas, and take action on cultural, social, environmental, and economic issues.',
         image: '/initiatives/yuva-samvaada.png',
         projects: [
-            { title: 'Abhyudaya Youth Parliament', description: 'Platform to debate and shape public thought', image: '/projects/youth-parliament.jpg' },
-            { title: 'Abhyudaya Young Leaders Dialogue', description: 'Leadership, innovation & policy engagement', image: '/projects/young-leaders.jpg' },
+            { title: 'Abhyudaya Youth Parliament', description: 'A platform to debate, discuss, and shape the future of public thought and civic action.', image: '/initiatives/youth-parliament.jpg' },
+            { title: 'Abhyudaya Young Leaders Dialogue', description: 'Fostering leadership, innovation, and policy engagement among the changemakers of tomorrow.', image: '/initiatives/young-leaders.png' },
         ],
     },
 ]
@@ -81,7 +81,7 @@ export default function InitiativesPage() {
                                                 src={project.image}
                                                 alt={project.title}
                                                 fill
-                                                className="object-cover rounded"
+                                                className="object-fit rounded"
                                             />
                                         </div>
                                         <h3 className="text-lg font-semibold text-gray-800 mb-2">
