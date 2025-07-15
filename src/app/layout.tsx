@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Abhyudaya Foundation',
-  description: 'Empowering lives through service',
+  description: 'where passion meets purpose',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
