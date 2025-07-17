@@ -1,13 +1,10 @@
 // components/FeaturedPosts.tsx
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import { client } from '@/sanity/lib/client'
 import { Post } from '@/app/utils/types'
-import { useEffect, useState } from 'react'
 
 const { projectId, dataset } = client.config()
 const urlFor = (source: SanityImageSource) =>
@@ -15,25 +12,16 @@ const urlFor = (source: SanityImageSource) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source).width(600).height(400).url()
     : '/placeholder.png'
 
-export default function FeaturedPosts() {
-  const [posts, setPosts] = useState<Post[]>([])
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const result: Post[] = await client.fetch(
-        `*[_type == "post" && author->name == "Abhyudaya Foundation"] | order(publishedAt desc){
-          _id,
-          title,
-          excerpt,
-          mainImage,
-          slug,
-        }`
-      )
-      setPosts(result)
-    }
-
-    fetchPosts()
-  }, [])
+export default async function FeaturedPosts() {
+  const posts: Post[] = await client.fetch(
+    `*[_type == "post" && author->name == "Abhyudaya Foundation"] | order(publishedAt desc){
+      _id,
+      title,
+      excerpt,
+      mainImage,
+      slug,
+    }`
+  )
 
   return (
     <div className="grid gap-3 md:grid-cols-4">
