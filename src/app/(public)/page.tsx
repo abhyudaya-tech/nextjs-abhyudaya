@@ -2,7 +2,7 @@ import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import Image from 'next/image'
 import Link from 'next/link'
-import NewsAndStories from "../components/NewsAndStories";
+import FeaturedPosts from "../components/FeaturedPosts";
 
 export default function HomePage() {
   return (
@@ -220,7 +220,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        <NewsAndStories />
+        {/* News & Stories Section */}
+        <section className="bg-white py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-orange-400 mb-10">
+              News & Stories
+            </h2>
+
+            <FeaturedPosts />
+          </div>
+        </section>
 
       </main>
       <Footer />
