@@ -1,64 +1,28 @@
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import Image from 'next/image'
+import { getUsersWithCurrentRoles, UserWithRoleAndTeam } from '@/app/lib/queries/getUsersWithCurrentRoles';
 
-const boardOfTrustees = [
-    {
-        name: 'Akshay G Jogihalli',
-        role: 'President',
-        description: 'Akshay leads the trust’s strategic vision, overseeing governance, technology, and impact-driven programs, ensuring alignment with mission and goals.'
-    },
-    {
-        name: 'Nagarjuna P',
-        role: 'Managing Trustee',
-        description: 'Nagarjuna manages the trust’s finances, human resources, and ensures financial sustainability, focusing on effective budgeting and compliance.'
-    },
-    {
-        name: 'Amith Hebbar',
-        role: 'Trustee',
-        description: 'Amith leads fundraising and partnership initiatives, working to expand resources and develop sustainable funding strategies for the trust.'
-    },
-    {
-        name: 'Phaneesh Mavattur',
-        role: 'Trustee',
-        description: 'Phaneesh oversees community outreach and public relations, enhancing the trust’s visibility and fostering relationships with key stakeholders.'
-    }
-];
 
-const operationalExcellenceTeam = [
-    {
-        name: 'Manoj S',
-        responsibility: 'Technology & Innovation',
-        description: 'Manoj drives the trust’s adoption of cutting-edge technology and innovative practices to streamline operations and maximize impact.'
-    },
-    {
-        name: '[Name]',
-        responsibility: 'Finance',
-        description: '[Name] ensures sound financial management, focusing on budgeting, financial planning, and compliance to ensure sustainability and growth.'
-    },
-    {
-        name: '[Name]',
-        responsibility: 'Fundraising',
-        description: '[Name] spearheads fundraising initiatives, designing and executing campaigns to secure resources for the trust’s projects and operations.'
-    },
-    {
-        name: '[Name]',
-        responsibility: 'Partnerships & Collaboration',
-        description: '[Name] develops and nurtures strategic partnerships with external organizations, expanding the trust’s reach and resources.'
-    },
-    {
-        name: '[Name]',
-        responsibility: 'Community Outreach & Public Relations',
-        description: '[Name] manages the trust’s outreach, public relations, and community engagement efforts to build awareness and foster relationships.'
-    },
-    {
-        name: '[Name]',
-        responsibility: 'Volunteer & Human Resources',
-        description: '[Name] oversees volunteer recruitment, training, and retention, ensuring a strong and engaged team to drive the trust’s initiatives.'
-    }
-];
+const teamOrder = ['Trustees', 'Operational Excellence Team'];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+
+    const members = await getUsersWithCurrentRoles();
+
+    const groupedByTeam = members.reduce((acc: Record<string, UserWithRoleAndTeam[]>, member) => {
+        const key = member.team_name || 'Other';
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(member);
+        return acc;
+    }, {});
+
+    // sort the entries
+    const sortedTeams = Object.entries(groupedByTeam).sort(
+        ([teamA], [teamB]) => teamOrder.indexOf(teamA) - teamOrder.indexOf(teamB)
+    );
+
+
     return (
         <>
             <Navbar />
@@ -113,32 +77,21 @@ export default function AboutPage() {
                     </section>
 
                     {/* Team */}
-
-                    <section>
-                        <h2 className="text-3xl font-semibold text-gray-700 mb-8">Trustees</h2>
-                        <div className="grid gap-4 md:grid-cols-2">
-                            {boardOfTrustees.map((member, index) => (
-                                <div key={index} className="border border-gray-200 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold text-gray-800">{member.name}</h3>
-                                    <p className="text-sm text-gray-600 font-medium mb-2">{member.role}</p>
-                                    <p className="text-gray-700">{member.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 className="text-3xl font-semibold text-gray-700 mb-8">Operational Excellence Team</h2>
-                        <div className="grid gap-3 md:grid-cols-3">
-                            {operationalExcellenceTeam.map((member, index) => (
-                                <div key={index} className="border border-gray-200 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold text-gray-800">{member.name}</h3>
-                                    <p className="text-sm text-gray-600 font-medium mb-2">{member.responsibility}</p>
-                                    <p className="text-gray-700">{member.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+                    {sortedTeams.map(([teamName, teamMembers]) => (
+                        <section key={teamName}>
+                            <h2 className="text-3xl font-semibold text-gray-700 mb-8">{teamName === 'Board of Trustees' ? 'Trustees' : teamName}</h2>
+                            <div className={`grid gap-4 md:${teamName === 'Board of Trustees' ? "grid-cols-2" : "grid-cols-3"}`}>
+                                {/* Map through team members */}
+                                {teamMembers.map((member) => (
+                                    <div key={member.user_id} className="border border-gray-200 rounded-xl p-6">
+                                        <h3 className="text-xl font-semibold text-gray-800">{member.full_name}</h3>
+                                        <p className="text-sm text-gray-600 font-medium mb-2">{member.role_name}</p>
+                                        <p className="text-gray-700">{member.role_bio && member.role_bio.replace('[Name]', member.full_name) || member.bio}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    ))}
                 </div>
             </main>
 

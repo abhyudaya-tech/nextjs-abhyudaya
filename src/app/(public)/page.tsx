@@ -66,7 +66,7 @@ export default function HomePage() {
                   href="/about"
                   className="inline-block px-6 py-2 rounded-full bg-orange-500 text-white hover:bg-orange-700 transition shadow"
                 >
-                  Learn More
+                  Know More
                 </Link>
               </div>
             </div>
