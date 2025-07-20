@@ -1,7 +1,7 @@
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import Image from 'next/image'
-import { getUsersWithCurrentRoles, UserWithRoleAndTeam } from '@/app/lib/queries/getUsersWithCurrentRoles';
+import { getUsersWithCurrentRoles, UserWithRoleAndTeam } from '@/lib/queries/getUsersWithCurrentRoles';
 
 
 const teamOrder = ['Trustees', 'Operational Excellence Team'];
