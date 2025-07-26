@@ -99,7 +99,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                                     </div>
                                 </div>
 
-                                <Link href={`/dashboard/teams/${team.id}`} className="text-orange-600 hover:text-orange-800 transition">
+                                <Link href={`/dashboard/teams`} className="text-orange-600 hover:text-orange-800 transition">
                                     <FaEye className="inline-block w-5 h-5" />
                                 </Link>
                             </li>
