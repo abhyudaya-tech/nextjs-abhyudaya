@@ -1,6 +1,8 @@
 // app/(private)/teams/page.tsx
 import { getAllTeams } from '@/lib/queries/getTeams'
 import Image from 'next/image'
+import Link from 'next/link';
+import { FaEye } from 'react-icons/fa';
 
 // Define types for the team and its members
 interface Member {
@@ -87,14 +89,22 @@ export default async function TeamsPage() {
                         </div>
 
                         {/* Members */}
-                        <div className="px-3">
+                        <div>
                             {sortMembers(team).map((member: Member) => (
                                 <div key={member.id} className="border-b border-gray-200 pb-2 mb-2">
-                                    <h3 className="font-semibold">
-                                        {member.full_name} {getIcons(team, member)}
-                                    </h3>
-                                    <p className="text-sm text-gray-500">{member.phone}</p>
-                                    <p className="text-sm text-gray-500">{member.email}</p>
+                                    <div className="flex justify-between items-center px-3">
+                                        <div>
+                                            <h3 className="font-semibold">
+                                                {member.full_name} {getIcons(team, member)}
+                                            </h3>
+                                            <p className="text-sm text-gray-500">{member.phone}</p>
+                                            <p className="text-sm text-gray-500">{member.email}</p>
+                                        </div>
+
+                                        <Link href={`/dashboard/members/${member.id}`} className="text-orange-500 hover:text-orange-800 transition">
+                                            <FaEye className="inline-block w-5 h-5" />
+                                        </Link>
+                                    </div>
                                 </div>
                             ))}
                         </div>
