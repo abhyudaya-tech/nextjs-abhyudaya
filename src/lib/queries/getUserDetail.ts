@@ -9,12 +9,6 @@ export async function getUserDetail(id: string) {
 
     if (error) throw error
 
-    // Fetch current teams
-    const { data: teamData } = await supabase
-        .from('team_members')
-        .select('team_id, team(name)')
-        .eq('user_id', id)
-
     // Fetch role history (without team)
     const { data: rolesData } = await supabase
         .from('role_history')
@@ -23,7 +17,6 @@ export async function getUserDetail(id: string) {
 
     return {
         ...data,
-        teams: teamData?.map((t) => ({ ...t.team, id: t.team_id })) || [],
         roles: rolesData?.map((r) => ({
             id: r.id,
             role_name: r.role,

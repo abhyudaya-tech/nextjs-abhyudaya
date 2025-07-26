@@ -70,7 +70,6 @@ export default async function AboutPage() {
 
                                     <td className="px-4 py-3 text-center text-gray-700">
                                         <div className="font-semibold">{user.responsibility || user.role_name}</div>
-                                        <div className="text-sm text-gray-500">{user.team_name || '-'}</div>
                                     </td>
 
                                     <td className="px-4 py-3 text-center text-gray-700">

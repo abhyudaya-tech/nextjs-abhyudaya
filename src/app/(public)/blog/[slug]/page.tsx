@@ -1,5 +1,5 @@
 import Navbar from "@/app/components/Navbar";
-import { portableTextComponents } from "@/app/utils/components/portable-text";
+import { portableTextComponents } from "@/app/components/portable-text";
 import { client } from "@/sanity/lib/client"; // or wherever your Sanity client is
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";

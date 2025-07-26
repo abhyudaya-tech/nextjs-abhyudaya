@@ -7,6 +7,18 @@ import Link from 'next/link'
 export default async function UserDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const user = await getUserDetail((await params).id)
 
+    function getRoleInTeam(team: { id: string; name: string; team_lead: string; coordinating_trustee: string }) {
+
+        const isBoardOfTrustees = team.name === 'Board of Trustees';
+
+        if (user.user_id === team.team_lead) {
+            return isBoardOfTrustees ? 'President' : 'Team Lead';
+        } else if (user.user_id === team.coordinating_trustee) {
+            return isBoardOfTrustees ? 'Managing Trustee' : 'Coordinating Trustee';
+        }
+        return isBoardOfTrustees ? 'Trustee' : 'Member';
+    }
+
     return (
         <>
             <div className="grid md:grid-cols-3 gap-3 mb-3">
@@ -67,14 +79,14 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                         Teams ({user.teams.length})
                     </h3>
                     <ul key="teams" className="space-y-3">
-                        {user.teams.map((team: { id: string, name: string, position: string }) => (
+                        {user.teams.map((team: { id: string, name: string, team_lead: string, coordinating_trustee: string }) => (
                             <li
                                 key={team.id}
                                 className="flex items-center justify-between text-sm"
                             >
                                 <div className="flex items-center gap-3">
                                     <Image
-                                        src="/icons/board-of-trustees.jpg"
+                                        src={`/teams/${team.name.replaceAll(' ','-')}.jpg`}
                                         alt="Profile"
                                         width={60}
                                         height={60}
@@ -83,7 +95,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
 
                                     <div>
                                         <p className="font-semibold text-gray-700">{team.name}</p>
-                                        <p className="text-gray-500">{team.position || 'Member'}</p>
+                                        <p className="text-gray-500">{getRoleInTeam(team)}</p>
                                     </div>
                                 </div>
 
