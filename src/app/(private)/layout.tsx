@@ -10,12 +10,16 @@ export default async function PrivateLayout({ children }: { children: React.Reac
   if (!user) redirect('/auth/signin')
 
   return (
-    <div className="flex">
-      <SecureSidebar {...user} />
-      <main className="flex-1 px-6 py-8 bg-gray-100 min-h-screen">
+    <div className="flex h-screen overflow-hidden">
+      {/* Fixed Sidebar */}
+      <div className="w-64 flex-shrink-0 h-screen sticky top-0">
+        <SecureSidebar {...user} />
+      </div>
+
+      {/* Scrollable Content */}
+      <main className="flex-1 overflow-y-auto px-6 py-8 bg-gray-100">
         {children}
       </main>
     </div>
   )
 }
-
