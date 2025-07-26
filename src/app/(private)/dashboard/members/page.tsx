@@ -2,6 +2,7 @@ import Footer from '@/app/components/Footer'
 import { getAllUsers, UserWithRoleAndTeam } from '@/lib/queries/getUsersWithCurrentRoles';
 import Link from 'next/link';
 import { FaCheckCircle, FaEye, FaTimesCircle } from 'react-icons/fa';
+import { formatDateToCustom } from '@/app/utils/date-formatters';
 
 const teamOrder = ['Trustees', 'Operational Excellence Team', 'Member', 'Volunteer', 'Donator'];
 
@@ -39,6 +40,7 @@ export default async function AboutPage() {
                                 <th className="px-4 py-3 text-left">Name</th>
                                 <th className="px-4 py-3 text-center">Phone</th>
                                 <th className="px-4 py-3 text-center">Role & Team</th>
+                                <th className="px-4 py-3 text-center">Joined On</th>
                                 <th className="px-4 py-3 text-center">View</th>
                             </tr>
                         </thead>
@@ -69,6 +71,10 @@ export default async function AboutPage() {
                                     <td className="px-4 py-3 text-center text-gray-700">
                                         <div className="font-semibold">{user.responsibility || user.role_name}</div>
                                         <div className="text-sm text-gray-500">{user.team_name || '-'}</div>
+                                    </td>
+
+                                    <td className="px-4 py-3 text-center text-gray-700">
+                                        <div className="font-semibold">{formatDateToCustom(user.joining_date)}</div>
                                     </td>
 
                                     <td className="px-4 py-3 text-center">

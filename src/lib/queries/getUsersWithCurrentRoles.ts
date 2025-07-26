@@ -9,6 +9,7 @@ export type UserWithRoleAndTeam = {
   email?: string;
   address?: string;
   responsibility?: string;
+  joining_date: string;
   is_active: boolean;
   role_name: string;
   role_description?: string;

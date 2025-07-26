@@ -1,6 +1,8 @@
-import { FaMapMarkerAlt, FaBirthdayCake, FaPhoneAlt, FaEnvelope } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaBirthdayCake, FaPhoneAlt, FaEnvelope, FaEye } from 'react-icons/fa'
 import Image from 'next/image'
 import { getUserDetail } from '@/lib/queries/getUserDetail'
+import { formatDateToCustom } from '@/app/utils/date-formatters'
+import Link from 'next/link'
 
 export default async function UserDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const user = await getUserDetail((await params).id)
@@ -11,7 +13,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                 {/* Left 2/3 Card */}
                 <div className="bg-white border border-gray-200 rounded-xl p-6 md:col-span-2 flex gap-6">
                     {/* Left: Profile Info */}
-                    <div className="flex gap-6 w-3/5">
+                    <div className="flex gap-6 w-3/5 items-center">
                         <Image
                             src="/icons/default-profile-pic.jpg"
                             alt="Profile"
@@ -20,8 +22,8 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                             className="rounded-xl object-cover"
                         />
                         <div>
-                            <h2 className="text-3xl font-bold text-gray-800 mb-1">{user.full_name}</h2>
-                            <p className="text-orange-600 uppercase text-sm font-semibold mb-1">{user.role_name}</p>
+                            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-700 via-pink-600 to-orange-500 inline-block text-transparent bg-clip-text mb-1">{user.full_name}</h2>
+                            <p className="text-orange-600 uppercase text-sm font-semibold mb-0.5">{user.role_name}</p>
                             <p className="text-gray-600 text-lg font-semibold">{user.team_name}</p>
                         </div>
                     </div>
@@ -51,7 +53,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                     <p className="flex items-center gap-2 mt-1">
                         <FaBirthdayCake className="text-gray-500" />
                         <span>DoB :</span>
-                        <span className="font-semibold">{user.dob ? new Date(user.dob).toDateString() : '—'}</span>
+                        <span className="font-semibold">{formatDateToCustom(user.dob)}</span>
                     </p>
                 </div>
 
@@ -61,35 +63,70 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
 
                 {/* Teams */}
                 <div className="bg-white border border-gray-200 rounded-xl mb-3 p-6">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Teams ({user.teams.length})</h3>
-                    <ul key="teams" className="space-y-2">
+                    <h3 className="text-xl font-semibold text-gray-700 mb-4">
+                        Teams ({user.teams.length})
+                    </h3>
+                    <ul key="teams" className="space-y-3">
                         {user.teams.map((team: { id: string, name: string, position: string }) => (
-                            <li key={team.id} className="flex justify-between text-sm">
-                                <div>
-                                    <p className="font-medium text-gray-800">{team.name}</p>
-                                    <p className="text-gray-500">{team.position || 'Member'}</p>
+                            <li
+                                key={team.id}
+                                className="flex items-center justify-between text-sm"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <Image
+                                        src="/icons/board-of-trustees.jpg"
+                                        alt="Profile"
+                                        width={60}
+                                        height={60}
+                                        className="rounded-xl object-cover"
+                                    />
+
+                                    <div>
+                                        <p className="font-semibold text-gray-700">{team.name}</p>
+                                        <p className="text-gray-500">{team.position || 'Member'}</p>
+                                    </div>
                                 </div>
-                                <p className="text-orange-600 font-semibold cursor-pointer hover:underline">VIEW</p>
+
+                                <Link href={`/dashboard/teams/${team.id}`} className="text-orange-600 hover:text-orange-800 transition">
+                                    <FaEye className="inline-block w-5 h-5" />
+                                </Link>
                             </li>
                         ))}
                     </ul>
                 </div>
 
+
                 {/* Role Timeline */}
-                <div className="bg-white border border-gray-200 rounded-xl mb-3 p-6">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Role Timeline</h3>
-                    <ul className="space-y-3 text-sm">
-                        {user.roles.map((role: { id: string, role_name: { name: string }, team_name: string, start_date: string }) => (
-                            <li key={role.id} className="flex items-start gap-2">
-                                <span className="text-pink-600 mt-1">📍</span>
+                <div className="bg-white border border-gray-200 rounded-xl mb-4 p-6 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-700 mb-4">Role Timeline</h3>
+                    <ul className="space-y-4 text-sm">
+                        {user.roles.map((role: {
+                            id: string,
+                            role_name: { name: string },
+                            team_name: string,
+                            start_date: string,
+                            end_date: string
+                        }) => (
+                            <li key={role.id} className="flex items-start gap-3">
+                                <div className="text-orange-600 text-lg mt-0.5"><FaMapMarkerAlt className="w-5 h-5 mt-0.5" /></div>
                                 <div>
-                                    <p className="font-medium text-gray-800">{role.role_name?.name ?? "Unknown Role"}</p>
-                                    <p className="text-gray-500">{new Date(role.start_date).toDateString()} | {role.team_name}</p>
+                                    <p className="font-semibold text-gray-700">
+                                        {role.role_name?.name ?? "Unknown Role"}
+                                    </p>
+                                    {role.team_name && (
+                                        <p className="text-gray-600 text-xs italic mb-0.5">
+                                            {role.team_name}
+                                        </p>
+                                    )}
+                                    <p className="text-gray-500">
+                                        {formatDateToCustom(role.start_date)} – {role.end_date ? formatDateToCustom(role.end_date) : 'Present'}
+                                    </p>
                                 </div>
                             </li>
                         ))}
                     </ul>
                 </div>
+
             </div>
         </>
     )
