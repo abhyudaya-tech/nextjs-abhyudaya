@@ -4,12 +4,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { User } from '@supabase/supabase-js'
-import { FaClipboardList, FaUsers, FaUser, FaChartBar } from 'react-icons/fa'
+import { FaClipboardList, FaUsers, FaUser, FaChartBar, FaUserFriends } from 'react-icons/fa'
 
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: <FaChartBar /> },
   { name: 'Minutes of Meeting', href: '/dashboard/minutes-of-meeting', icon: <FaClipboardList /> },
-  { name: 'Team Members', href: '/dashboard/members', icon: <FaUsers /> },
+  { name: 'Team Members', href: '/dashboard/members', icon: <FaUserFriends /> },
+  { name: 'Teams', href: '/dashboard/teams', icon: <FaUsers /> },
 ]
 
 export default function SecureSidebar(user: User) {
