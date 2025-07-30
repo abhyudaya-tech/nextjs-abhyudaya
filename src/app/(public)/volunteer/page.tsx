@@ -8,6 +8,7 @@ const volunteerActivities = [
         subtitle: '(तन – By Giving Your Time)',
         description: 'Become a part of something greater by contributing your time and energy to our cause. We offer a wide range of volunteer opportunities tailored to different interests and skill sets. Whether it\'s organizing events, supporting campaigns, or working behind the scenes, your efforts help drive meaningful change. Join us and experience the joy of giving back while making a tangible impact on society.',
         image: '/volunteer/volunteer.png',
+        cta: 'Join Now',
     },
     {
         title: 'Share Ideas',
@@ -58,18 +59,50 @@ export default function VolunteerPage() {
 
                                 {/* Text Section */}
                                 <div className="w-full sm:w-2/3">
+
+                                    {/* Title */}
                                     <h2 className="text-3xl font-semibold text-gray-800 mb-2 text-left">
                                         {volunteer.title}
                                     </h2>
+
+                                    {/* Subtitle */}
                                     <h3 className="text-lg text-gray-600 mb-4 text-left">
                                         {volunteer.subtitle}
                                     </h3>
-                                    <p className="text-gray-600 text-left">
-                                        {volunteer.description}
-                                    </p>
+
+                                    {/* Description */}
+                                    <p className="text-gray-600 text-left">{volunteer.description}</p>
+
+
+                                    {/* CTA Button */}
+                                    {volunteer.cta && (
+                                        <a
+                                            href="https://forms.gle/YXgCGZttBHfrwMed7"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-block my-3 group bg-blue-600 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-4xl transition duration-300"
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                Join Now
+                                                <span className="flex items-center transition-transform duration-300 group-hover:translate-x-1">
+                                                    <svg
+                                                        aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        className="w-4 h-4"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke="currentColor"
+                                                        strokeWidth="2"
+                                                    >
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </a>)}
                                 </div>
                             </div>
                         </section>
+
                     ))}
                 </div>
             </main>

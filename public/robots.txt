@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://abhyudayafoundation.in
+
+# Sitemaps
+Sitemap: https://abhyudayafoundation.in/sitemap.xml
