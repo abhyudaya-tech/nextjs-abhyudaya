@@ -109,7 +109,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
 
 
                 {/* Role Timeline */}
-                <div className="bg-white border border-gray-200 rounded-xl mb-4 p-6 shadow-sm">
+                <div className="bg-white border border-gray-200 rounded-xl mb-4 p-6">
                     <h3 className="text-xl font-bold text-gray-700 mb-4">Role Timeline</h3>
                     <ul className="space-y-4 text-sm">
                         {user.roles.map((role: {
