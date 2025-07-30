@@ -21,7 +21,7 @@ export type UserWithRoleAndTeam = {
 
 export async function getUsersWithCurrentRoles(): Promise<UserWithRoleAndTeam[]> {
   const { data, error } = await supabase
-    .from('users_with_current_roles_with_team')
+    .from('public_user_with_role_and_team')
     .select('*')
 
   if (error) throw error
