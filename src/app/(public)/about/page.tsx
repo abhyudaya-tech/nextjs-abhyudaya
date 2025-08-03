@@ -79,7 +79,7 @@ export default async function AboutPage() {
                     {/* Team */}
                     {sortedTeams.map(([teamName, teamMembers]) => (
                         <section key={teamName}>
-                            <h2 className="text-3xl font-semibold text-gray-700 mb-8">{teamName === 'Board of Trustees' ? 'Trustees' : teamName}</h2>
+                            <h2 className="text-3xl font-semibold text-gray-700 mb-8">{teamName === 'Board of Trustees' ? 'Leadership Team' : teamName}</h2>
                             <div className={`grid gap-4 md:${teamName === 'Board of Trustees' ? "grid-cols-2" : "grid-cols-3"}`}>
                                 {/* Map through team members */}
                                 {teamMembers.map((member) => (
