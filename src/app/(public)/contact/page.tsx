@@ -46,7 +46,7 @@ export default function ContactPage() {
 
           <div className="mt-12 text-center text-gray-600 space-y-2">
             <p><strong>Email:</strong> contact@abhyudayafoundation.in</p>
-            <p><strong>Phone:</strong> +91 98765 43210</p>
+            <p><strong>Phone:</strong> +91 86182 20151</p>
             <p><strong>Address:</strong> Bengaluru, India</p>
           </div>
         </div>

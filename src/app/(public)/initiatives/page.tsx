@@ -22,7 +22,7 @@ const initiatives = [
         ],
     },
     {
-        title: 'ಯuva ಸಂವಾದ',
+        title: 'ಯುವ ಸಂವಾದ',
         description: 'Yuva Samvada creates a space for young people to engage in dialogue, exchange ideas, and take action on cultural, social, environmental, and economic issues.',
         image: '/initiatives/yuva-samvaada.png',
         projects: [
