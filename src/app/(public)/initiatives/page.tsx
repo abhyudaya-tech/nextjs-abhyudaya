@@ -18,7 +18,7 @@ const initiatives = [
         image: '/initiatives/samskruthi-sahal.png',
         projects: [
             { title: 'Historical Heritage Tours', description: 'Explore timeless tales carved in stone through guided visits to ancient temples, forts, and monuments.', image: '/initiatives/historical-heritage.png' },
-            { title: 'Goushala & Gou Economy', description: 'Experience the sacred bond with cows and discover the sustainable wealth of the Gou-based economy.', image: '/initiatives/goushala.png' },
+            { title: 'GouVikas', description: 'A step toward sustainable development through the sacred bond with cows, promoting eco-friendly, and discover the sustainable wealth of the Gou-based economy.', image: '/initiatives/goushala.png' },
         ],
     },
     {
