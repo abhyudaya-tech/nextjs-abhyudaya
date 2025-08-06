@@ -24,7 +24,7 @@ export const initiatives: Initiatives[] = [
     tagline: 'Think Global, Act Local',
     description:
       'Inspires pride in Bharatiya innovation, entrepreneurship, and local economy. Encourages mindful consumption and support for locally made products and community-driven solutions.',
-    image: '/initiatives/goushala.png',
+    image: '/initiatives/swadeshi.png',
     activities: [
       'Promoting Swadeshi',
       'Swadeshi expos',
@@ -37,7 +37,7 @@ export const initiatives: Initiatives[] = [
     tagline: 'Inspiring Action, Empowering Change',
     description:
       'Builds active citizenship through volunteering, social awareness, and community participation. Covers civic behavior (cleanliness, voting, traffic rules), disaster response, and public campaigns.',
-    image: '/initiatives/historical-heritage.png',
+    image: '/initiatives/civic-responsibility.png',
     activities: [
       'Cleanliness drives',
       'Blood donation',
@@ -50,7 +50,7 @@ export const initiatives: Initiatives[] = [
     tagline: 'Acting Now, Shaping Tomorrow',
     description:
       'Promotes eco-conscious living through tree planting, waste reduction, water conservation, and climate literacy. Encourages stewardship of natural resources and responsible habits.',
-    image: '/initiatives/young-leaders.png',
+    image: '/initiatives/prakriti.png',
     activities: [
       'Promoting Desi Gou Economy',
       'Plantation drives',

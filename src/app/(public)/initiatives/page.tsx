@@ -135,21 +135,25 @@ export default function InitiativesPage() {
 
                     {/* Tech For Good */}
                     <section>
-                        <div className="bg-orange-50 rounded-xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-evenly">
-                            <div className="w-full sm:w-1/8 sm:mr-4 mb-4 sm:mb-0">
-                                <img
-                                    src={TechForGood.image}
-                                    alt={TechForGood.title}
-                                    className="w-full h-auto rounded-lg object-cover"
-                                />
-                            </div>
-                            <div className="w-full sm:w-4/6">
-                                <h2 className="text-3xl font-semibold text-gray-800 mb-2 text-left">
-                                    {TechForGood.title}
-                                </h2>
-                                <p className="text-gray-700 text-left">
-                                    {TechForGood.description}
-                                </p>
+                        <div className="bg-white border border-orange-300 rounded-xl p-4 px-12 mb-8 shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                                <div className="w-full md:w-1/5">
+                                    <Image
+                                        src={TechForGood.image}
+                                        alt={TechForGood.title}
+                                        width={160}
+                                        height={160}
+                                        className="rounded-lg object-cover w-full h-auto"
+                                    />
+                                </div>
+                                <div className="w-full md:w-3/5">
+                                    <h2 className="text-3xl font-bold text-orange-600 mb-2">
+                                        {TechForGood.title}
+                                    </h2>
+                                    <p className="text-gray-700 mb-4">
+                                        {TechForGood.description}
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
