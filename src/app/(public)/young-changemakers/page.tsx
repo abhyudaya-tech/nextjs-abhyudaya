@@ -126,35 +126,42 @@ export default function YoungChangemakersPage() {
                     </section>
 
                     {/* Club Info */}
-                    <section className="max-w-4xl mx-auto px-4 my-12">
-                        <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <section className="max-w-3xl mx-auto px-4 my-12">
+                        <div className="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
 
-                            <h2 className="text-3xl font-bold mb-4 pb-4 text-center text-gray-800 flex items-center justify-center gap-2 border-b border-gray-300">
-                                <span>🟠</span> Changemaker Circles <span className="text-gray-500 text-lg">(Youth Clubs)</span>
-                            </h2>
-                            <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                            {/* Header */}
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-2 sm:gap-4 border-b border-gray-300 pb-4 mb-4 text-center">
+                                <div>
+                                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+                                        Changemaker Circles
+                                    </h2>
+                                    <p className="text-md sm:text-base text-gray-500 mt-1 sm:mt-0">
+                                        Youth Clubs
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <p className="text-gray-700 mb-6 text-base sm:text-lg leading-relaxed">
                                 A <span className="font-semibold">“Changemaker Circle”</span> is a club or group formed in colleges, universities, corporate teams, or your locality. Each club is driven by 5 principles, meets weekly or biweekly, runs drives & events, and nurtures leadership from within.
                             </p>
 
+                            {/* Structure List */}
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-10 text-gray-700 mb-6 text-md">
-                                <li className="flex items-center gap-2">
-                                    <span className="text-orange-600 text-xl">🔹</span>
-                                    <span>Lead Changemaker</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-orange-600 text-xl">🔹</span>
-                                    <span>Core Changemakers (5–7 for each principle)</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-orange-600 text-xl">🔹</span>
-                                    <span>Mentor/Coordinator</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-orange-600 text-xl">🔹</span>
-                                    <span>Changemakers (members)</span>
-                                </li>
+                                {[
+                                    'Lead Changemaker',
+                                    'Core Changemakers (5–7 for each principle)',
+                                    'Mentor/Coordinator',
+                                    'Changemakers (members)'
+                                ].map((role, i) => (
+                                    <li key={i} className="flex items-start gap-2">
+                                        <span className="text-orange-600 text-xl">🔹</span>
+                                        <span>{role}</span>
+                                    </li>
+                                ))}
                             </ul>
 
+                            {/* Footer Note */}
                             <p className="text-sm text-gray-500 italic border-t border-gray-200 pt-4">
                                 <b>Engagement:</b> Weekly / Biweekly meetings · Quarterly events · Recognition badges
                             </p>

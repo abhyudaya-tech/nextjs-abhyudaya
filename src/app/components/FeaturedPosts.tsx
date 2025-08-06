@@ -24,7 +24,7 @@ export default async function FeaturedPosts() {
   )
 
   return (
-    <div className="grid gap-3 md:grid-cols-4">
+    <div className="grid gap-3 md:grid-cols-3">
       {posts.map((post) => (
         <Link
           key={post._id}

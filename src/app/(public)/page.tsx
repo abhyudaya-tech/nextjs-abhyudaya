@@ -52,7 +52,7 @@ export default function HomePage() {
 
         {/* About Us Section */}
         <section className="mt-20 px-4">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             {/* LHS: Text Content */}
             <div>
               <h2 className="text-3xl font-semibold text-orange-400 mb-4">About Us</h2>
@@ -86,7 +86,7 @@ export default function HomePage() {
 
         {/* Mission & Vision Stripe */}
         <section className="mt-8 bg-orange-50 py-12 px-4">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 md:gap-30 gap-10 items-start text-center md:text-left">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 md:gap-30 gap-10 items-start text-center md:text-left">
             {/* Mission */}
             <div className="text-center">
               <h3 className="text-xl font-semibold text-orange-700 mb-2">🎯 Our Mission</h3>
@@ -107,7 +107,7 @@ export default function HomePage() {
 
         {/* Our Initiatives Section */}
         <section className="bg-white py-16 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-orange-400 mb-12">
               Our Initiatives
             </h2>
@@ -227,7 +227,7 @@ export default function HomePage() {
 
         {/* News & Stories Section */}
         <section className="bg-white py-16 px-4">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-orange-400 mb-10">
               News & Stories
             </h2>

@@ -6,7 +6,7 @@ export default function BlogPage() {
     <>
       <Navbar />
       <main className="min-h-screen bg-white py-8 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-800 mb-12 text-center">
             Blogs & Stories
           </h1>
