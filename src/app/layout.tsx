@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'Abhyudaya Foundation is a Bengaluru‑based, youth‑led volunteer movement dedicated to fostering a stronger Bharat through cultural revival, civic engagement, and tech‑driven social impact. "Abhyudaya" means "rising" or "upliftment" - reflecting our mission to awaken self‑awareness and shared responsibility among India\'s youth.',
   keywords: ['abhyudaya', 'foundation', 'charity', 'seva', 'samskruthi', 'trust', 'bharat', 'culture', 'techforgood', 'youth', 'empowerment', 'nationalism', 'heritage'],
   icons: {
-    icon: '/assets/images/brand/logo_af_square_without_bg.png',
+    icon: '/brand/logo_af_square_without_bg.png',
   },
   openGraph: {
     title: 'Abhyudaya Foundation',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'Abhyudaya Foundation',
     images: [
       {
-        url: '/assets/images/brand/logo_af_without_bg.png',
+        url: '/brand/logo_af_without_bg.png',
       },
     ],
     type: 'website',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Abhyudaya Foundation',
     description: 'Abhyudaya Foundation is a Bengaluru‑based, youth‑led volunteer movement dedicated to fostering a stronger Bharat through cultural revival, civic engagement, and tech‑driven social impact. "Abhyudaya" means "rising" or "upliftment" - reflecting our mission to awaken self‑awareness and shared responsibility among India\'s youth.',
-    images: ['/assets/images/brand/logo_af_without_bg.png'],
+    images: ['/brand/logo_af_without_bg.png'],
   },
   alternates: {
     canonical: 'https://abhyudayafoundation.in/',

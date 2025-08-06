@@ -15,7 +15,7 @@ const navItems = [
 
 export default function SecureSidebar(user: User) {
   const pathname = usePathname()
-console.log('SecureSidebar user:', user);
+  console.log('SecureSidebar user:', user);
   return (
     <aside className="hidden md:flex flex-col w-64 bg-gray-800 min-h-screen px-3 py-6 border-r shadow-sm">
       <div className="mb-3 border-b border-gray-400">
@@ -35,11 +35,10 @@ console.log('SecureSidebar user:', user);
             <li key={item.name}>
               <Link
                 href={item.href}
-                className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
-                  pathname === item.href
+                className={`flex items-center px-3 py-2 rounded-lg transition-colors ${pathname === item.href
                     ? 'bg-orange-100 text-orange-700'
                     : 'hover:bg-orange-200 hover:text-orange-700'
-                }`}
+                  }`}
               >
                 <span className="text-lg mr-3">{item.icon}</span>
                 {item.name}

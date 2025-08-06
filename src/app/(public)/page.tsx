@@ -135,7 +135,7 @@ export default function HomePage() {
                 <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
                   <div className="relative w-full h-40 mb-4">
                     <Image
-                      src="/initiatives/samskruthi-sahal.png"
+                      src="/initiatives/samskruthi.png"
                       alt="Samskruti Sahal"
                       fill
                       className="object-cover rounded"

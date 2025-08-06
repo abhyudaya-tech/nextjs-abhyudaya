@@ -1,36 +1,49 @@
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import Image from 'next/image'
+import { initiatives } from '@/app/utils/data/initiatives'
 
-const initiatives = [
-    {
-        title: '#TechForGood',
-        description: 'An initiative where technology is harnessed to solve cultural, social, environmental, and economic challenges, by bridging innovation with social impact.',
-        image: '/initiatives/tech-for-good.png',
-        projects: [
-            { title: 'Prajnanam', description: 'A digital platform uniting diverse cultural & social organizations - offering technical support, sharing event updates, insightful blogs, and interactive \'Play & Learn\' experiences to nurture knowledge, creativity, and community engagement.', image: '/initiatives/prajnanam.png' },
-            { title: 'Gnana Sangama', description: 'An application designed to bring together the richness of Bharatiya culture, traditions, and values in one place. It serves as a trusted source for learning, exploration, and collaboration.', image: '/initiatives/gnana-sangama.png' },
-        ],
-    },
-    {
-        title: 'ಸಂಸ್ಕೃತಿ ಸಹಲ್',
-        description: 'Samskruti Sahal celebrates cultural diversity and heritage, inviting individuals on a journey through traditional arts, music, and history.',
-        image: '/initiatives/samskruthi-sahal.png',
-        projects: [
-            { title: 'Historical Heritage Tours', description: 'Explore timeless tales carved in stone through guided visits to ancient temples, forts, and monuments.', image: '/initiatives/historical-heritage.png' },
-            { title: 'GouVikas', description: 'A step toward sustainable development through the sacred bond with cows, promoting eco-friendly, and discover the sustainable wealth of the Gou-based economy.', image: '/initiatives/goushala.png' },
-        ],
-    },
-    {
-        title: 'ಯುವ ಸಂವಾದ',
-        description: 'Yuva Samvada creates a space for young people to engage in dialogue, exchange ideas, and take action on cultural, social, environmental, and economic issues.',
-        image: '/initiatives/yuva-samvaada.png',
-        projects: [
-            { title: 'Abhyudaya Youth Parliament', description: 'A platform to debate, discuss, and shape the future of public thought and civic action.', image: '/initiatives/youth-parliament.jpg' },
-            { title: 'Abhyudaya Young Leaders Dialogue', description: 'Fostering leadership, innovation, and policy engagement among the changemakers of tomorrow.', image: '/initiatives/young-leaders.png' },
-        ],
-    },
-]
+type Project = {
+    title: string
+    subtitle?: string
+    description: string
+    image?: string
+}
+
+type Initiative = {
+    title: string
+    subtitle?: string
+    description: string
+    image: string
+    projects: Project[]
+}
+
+const TechForGood: Initiative = {
+    title: '#TechForGood',
+    description:
+        'An initiative where technology is harnessed to solve cultural, social, environmental, and economic challenges by bridging innovation with social impact.',
+    image: '/initiatives/tech-for-good.png',
+    projects: [
+        {
+            title: 'Changemakers App',
+            description:
+                'A platform for young changemakers to manage clubs, track events, earn badges, and collaborate locally.',
+            image: '/initiatives/yuva-samvaada.png',
+        },
+        {
+            title: 'Prajnanam',
+            description:
+                'A digital space for culture-based orgs to share events, blogs, and resources with youth-friendly features.',
+            image: '/initiatives/prajnanam.png',
+        },
+        {
+            title: 'Gnana Sangama',
+            description:
+                'An app curating Bharatiya knowledge systems and values for digital learning, storytelling, and exploration.',
+            image: '/initiatives/gnana-sangama.png',
+        },
+    ],
+}
 
 export default function InitiativesPage() {
     return (
@@ -43,39 +56,110 @@ export default function InitiativesPage() {
                         Our Initiatives
                     </h1>
 
-                    {initiatives.map((initiative, index) => (
-                        <section key={index}>
-                            {/* Description Section with BG */}
-                            <div className="bg-orange-50 rounded-xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-evenly">
-                                {/* Image Section */}
-                                <div className="w-full sm:w-1/8 sm:mr-4 mb-4 sm:mb-0">
-                                    <img
-                                        src={initiative.image}
-                                        alt={initiative.title}
-                                        className="w-full h-auto rounded-lg object-cover"
-                                    />
-                                </div>
-
-                                {/* Text Section */}
-                                <div className="w-full sm:w-4/6">
-                                    <h2 className="text-3xl font-semibold text-gray-800 mb-2 text-left">
-                                        {initiative.title}
-                                    </h2>
-                                    <p className="text-gray-700 text-left">
-                                        {initiative.description}
-                                    </p>
-                                </div>
+                    {/* Young Changemakers Section */}
+                    <section className="bg-white border border-orange-300 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <div className="flex flex-col md:flex-row items-center gap-6">
+                            <div className="w-full md:w-1/4">
+                                <Image
+                                    src="/brand/logo_af_square_without_bg.png"
+                                    alt="Young Changemakers"
+                                    width={240}
+                                    height={240}
+                                    className="rounded-lg object-cover w-full h-auto"
+                                />
                             </div>
+                            <div className="w-full md:w-3/4">
+                                <h2 className="text-3xl font-bold text-orange-600 mb-2">
+                                    Young Changemakers
+                                </h2>
+                                <p className="text-gray-700 mb-4">
+                                    A youth-led movement to lead cultural, civic, and sustainable transformation rooted in Bharatiya values — for students, professionals, and volunteers. Join or start a club in your campus, company, or community.
+                                </p>
+                                <a
+                                    href="/young-changemakers"
+                                    className="inline-block bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-700 transition"
+                                >
+                                    Know More
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Principle-Based Initiatives */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+                        {initiatives.map((initiative, index) => (
+                            <div
+                                key={index}
+                                className="bg-orange-50 rounded-xl p-6 flex flex-col items-start hover:shadow-md transition-shadow duration-200"
+                            >
+                                {/* Header Row: Image + Title/Tagline (responsive layout) */}
+                                <div className="flex flex-col sm:flex-row items-start w-full mb-4">
+                                    {/* Image container with fixed size */}
+                                    <div className="w-full sm:w-auto sm:h-24 flex-shrink-0 mb-2 sm:mb-0 sm:mr-4">
+                                        <img
+                                            src={initiative.image}
+                                            alt={initiative.title}
+                                            className="w-full h-full object-contain rounded-md"
+                                        />
+                                    </div>
+
+                                    {/* Title & Tagline */}
+                                    <div>
+                                        <h2 className="text-xl font-bold text-orange-700 leading-snug">
+                                            {initiative.title}
+                                        </h2>
+                                        {initiative.tagline && (
+                                            <p className="text-sm text-orange-500 font-medium leading-tight">
+                                                {initiative.tagline}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Description */}
+                                <p className="text-gray-700 text-md mb-2">
+                                    {initiative.description}
+                                </p>
+
+                                {/* Activities */}
+                                <ul className="list-disc list-inside text-gray-600 text-md">
+                                    {initiative.activities.map((act, i) => (
+                                        <li key={i}>{act}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
 
 
 
-                            {/* Project Grid - White BG */}
-                            <div className="grid md:grid-cols-3 gap-8">
-                                {initiative.projects.map((project, idx) => (
-                                    <div
-                                        key={idx}
-                                        className="border border-gray-200 rounded-xl p-6 text-center"
-                                    >
+                    {/* Tech For Good */}
+                    <section>
+                        <div className="bg-orange-50 rounded-xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-evenly">
+                            <div className="w-full sm:w-1/8 sm:mr-4 mb-4 sm:mb-0">
+                                <img
+                                    src={TechForGood.image}
+                                    alt={TechForGood.title}
+                                    className="w-full h-auto rounded-lg object-cover"
+                                />
+                            </div>
+                            <div className="w-full sm:w-4/6">
+                                <h2 className="text-3xl font-semibold text-gray-800 mb-2 text-left">
+                                    {TechForGood.title}
+                                </h2>
+                                <p className="text-gray-700 text-left">
+                                    {TechForGood.description}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {TechForGood.projects.map((project, idx) => (
+                                <div
+                                    key={idx}
+                                    className="border border-gray-200 rounded-xl p-6 text-center"
+                                >
+                                    {project.image && (
                                         <div className="relative w-full h-40 mb-4">
                                             <Image
                                                 src={project.image}
@@ -84,15 +168,16 @@ export default function InitiativesPage() {
                                                 className="object-fit rounded"
                                             />
                                         </div>
-                                        <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-gray-600 text-sm">{project.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                    ))}
+                                    )}
+                                    <h3 className="text-xl font-semibold text-gray-800">
+                                        {project.title}
+                                    </h3>
+                                    <p className="text-gray-600 text-sm">{project.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
                 </div>
             </main>
 
