@@ -105,7 +105,7 @@ export default function InitiativesPage() {
 
                                     {/* Title & Tagline */}
                                     <div>
-                                        <h2 className="text-xl font-bold text-orange-700 leading-snug">
+                                        <h2 className="text-xl font-bold text-orange-700 leading-snug mb-2">
                                             {initiative.title}
                                         </h2>
                                         {initiative.tagline && (
@@ -122,11 +122,11 @@ export default function InitiativesPage() {
                                 </p>
 
                                 {/* Activities */}
-                                <ul className="list-disc list-inside text-gray-600 text-md">
+                                {/* <ul className="list-disc list-inside text-gray-600 text-md">
                                     {initiative.activities.map((act, i) => (
                                         <li key={i}>{act}</li>
                                     ))}
-                                </ul>
+                                </ul> */}
                             </div>
                         ))}
                     </div>
