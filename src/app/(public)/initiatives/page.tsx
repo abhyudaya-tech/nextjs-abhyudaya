@@ -57,81 +57,83 @@ export default function InitiativesPage() {
                     </h1>
 
                     {/* Young Changemakers Section */}
-                    <section className="bg-white border border-orange-300 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <div className="flex flex-col md:flex-row items-center gap-6">
-                            <div className="w-full md:w-1/4">
-                                <Image
-                                    src="/brand/logo_af_square_without_bg.png"
-                                    alt="Young Changemakers"
-                                    width={240}
-                                    height={240}
-                                    className="rounded-lg object-cover w-full h-auto"
-                                />
-                            </div>
-                            <div className="w-full md:w-3/4">
-                                <h2 className="text-3xl font-bold text-orange-600 mb-2">
-                                    Young Changemakers
-                                </h2>
-                                <p className="text-gray-700 mb-4">
-                                    A youth-led movement to lead cultural, civic, and sustainable transformation rooted in Bharatiya values — for students, professionals, and volunteers. Join or start a club in your campus, company, or community.
-                                </p>
-                                <a
-                                    href="/young-changemakers"
-                                    className="inline-block bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-700 transition"
-                                >
-                                    Know More
-                                </a>
+                    <section>
+                        <div className="mb-8 bg-white border border-orange-300 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div className="flex flex-col md:flex-row items-center gap-6">
+                                <div className="w-full md:w-1/4">
+                                    <Image
+                                        src="/brand/logo_af_square_without_bg.png"
+                                        alt="Young Changemakers"
+                                        width={240}
+                                        height={240}
+                                        className="rounded-lg object-cover w-full h-auto"
+                                    />
+                                </div>
+                                <div className="w-full md:w-3/4">
+                                    <h2 className="text-3xl font-bold text-orange-600 mb-2">
+                                        Young Changemakers
+                                    </h2>
+                                    <p className="text-gray-700 mb-4">
+                                        A youth-led movement to lead cultural, civic, and sustainable transformation rooted in Bharatiya values — for students, professionals, and volunteers. Join or start a club in your campus, company, or community.
+                                    </p>
+                                    <a
+                                        href="/young-changemakers"
+                                        className="inline-block bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-700 transition"
+                                    >
+                                        Know More
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </section>
 
-                    {/* Principle-Based Initiatives */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-                        {initiatives.map((initiative, index) => (
-                            <div
-                                key={index}
-                                className="bg-orange-50 rounded-xl p-6 flex flex-col items-start hover:shadow-md transition-shadow duration-200"
-                            >
-                                {/* Header Row: Image + Title/Tagline (responsive layout) */}
-                                <div className="flex flex-col sm:flex-row items-start w-full mb-4">
-                                    {/* Image container with fixed size */}
-                                    <div className="w-full sm:w-auto sm:h-24 flex-shrink-0 mb-2 sm:mb-0 sm:mr-4">
-                                        <img
-                                            src={initiative.image}
-                                            alt={initiative.title}
-                                            className="w-full h-full object-contain rounded-md"
-                                        />
+                        {/* Principle-Based Initiatives */}
+                        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
+                            {initiatives.map((initiative, index) => (
+                                <div
+                                    key={index}
+                                    className="bg-orange-50 rounded-xl p-6 flex flex-col items-start hover:shadow-md transition-shadow duration-200"
+                                >
+                                    {/* Header Row: Image + Title/Tagline (responsive layout) */}
+                                    <div className="flex flex-col sm:flex-row items-start w-full mb-4">
+                                        {/* Image container with fixed size */}
+                                        <div className="w-full sm:w-auto sm:h-24 flex-shrink-0 mb-2 sm:mb-0 sm:mr-4">
+                                            <img
+                                                src={initiative.image}
+                                                alt={initiative.title}
+                                                className="w-full h-full object-contain rounded-md"
+                                            />
+                                        </div>
+
+                                        {/* Title & Tagline */}
+                                        <div>
+                                            <h2 className="text-xl font-bold text-orange-700 leading-snug mb-2">
+                                                {initiative.title}
+                                            </h2>
+                                            {initiative.tagline && (
+                                                <p className="text-sm text-orange-500 font-medium leading-tight">
+                                                    {initiative.tagline}
+                                                </p>
+                                            )}
+                                        </div>
                                     </div>
 
-                                    {/* Title & Tagline */}
-                                    <div>
-                                        <h2 className="text-xl font-bold text-orange-700 leading-snug mb-2">
-                                            {initiative.title}
-                                        </h2>
-                                        {initiative.tagline && (
-                                            <p className="text-sm text-orange-500 font-medium leading-tight">
-                                                {initiative.tagline}
-                                            </p>
-                                        )}
-                                    </div>
-                                </div>
+                                    {/* Description */}
+                                    <p className="text-gray-700 text-md mb-2">
+                                        {initiative.description}
+                                    </p>
 
-                                {/* Description */}
-                                <p className="text-gray-700 text-md mb-2">
-                                    {initiative.description}
-                                </p>
-
-                                {/* Activities */}
-                                {/* <ul className="list-disc list-inside text-gray-600 text-md">
+                                    {/* Activities */}
+                                    {/* <ul className="list-disc list-inside text-gray-600 text-md">
                                     {initiative.activities.map((act, i) => (
                                         <li key={i}>{act}</li>
                                     ))}
                                 </ul> */}
-                            </div>
-                        ))}
-                    </div>
+                                </div>
+                            ))}
+                        </div>
 
 
+                    </section>
 
                     {/* Tech For Good */}
                     <section>
@@ -157,7 +159,7 @@ export default function InitiativesPage() {
                             </div>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-8">
+                        <div className="grid md:grid-cols-3 gap-3">
                             {TechForGood.projects.map((project, idx) => (
                                 <div
                                     key={idx}
