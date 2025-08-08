@@ -8,7 +8,7 @@ type Initiatives = {
 
 export const initiatives: Initiatives[] = [
   {
-    title: 'Samskruti – Rooted in Dharma',
+    title: 'Samskruti – Rooted in Culture',
     tagline: 'Nurturing Values Through Culture',
     description:
       'Promotes family values, ethics, and cultural pride as the foundation for righteous living. Fosters personality development, moral clarity, and respect for heritage through traditions, rituals, arts, and inner discipline.',
