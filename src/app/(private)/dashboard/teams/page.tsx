@@ -65,7 +65,7 @@ export default async function TeamsPage() {
         <>
             <h1 className="text-3xl font-bold mb-8 text-gray-800">Teams @Abhyudaya</h1>
             <p className="text-gray-600 mb-6">
-                ⚙️ Coordinating Trustee | ⭐ Team Lead | Members
+                ⚙️ Coordinator | ⭐ Lead | Members
             </p>
 
             <div className="grid gap-3 md:grid-cols-2">

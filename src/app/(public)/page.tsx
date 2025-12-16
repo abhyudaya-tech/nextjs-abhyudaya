@@ -118,6 +118,22 @@ export default function HomePage() {
                 <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
                   <div className="relative w-full h-40 mb-4">
                     <Image
+                      src="/brand/logo_af_cm_square_without_bg.png"
+                      alt="TechForGood"
+                      fill
+                      className="object-contain rounded"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Changemakers</h3>
+                  <p className="text-gray-600 text-md">
+                    A youth-led movement to lead cultural, civic, and sustainable transformation rooted in Bharatiya values, for students, professionals, and volunteers.
+                  </p>
+                </div>
+
+                {/* Card 2: Samskruti Sahal */}
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
+                  <div className="relative w-full h-40 mb-4">
+                    <Image
                       src="/initiatives/tech-for-good.png"
                       alt="TechForGood"
                       fill
@@ -131,7 +147,7 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {/* Card 2: Samskruti Sahal */}
+                {/* Card 3: Yuva Samvada */}
                 <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
                   <div className="relative w-full h-40 mb-4">
                     <Image
@@ -145,23 +161,6 @@ export default function HomePage() {
                   <p className="text-gray-600 text-md">
                     Samskruti Sahal celebrates cultural diversity and heritage, inviting individuals
                     on a journey through traditional arts, music, and history.
-                  </p>
-                </div>
-
-                {/* Card 3: Yuva Samvada */}
-                <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
-                  <div className="relative w-full h-40 mb-4">
-                    <Image
-                      src="/initiatives/yuva-samvaada.png"
-                      alt="Yuva Samvada"
-                      fill
-                      className="object-contain rounded"
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">ಯುವ ಸಂವಾದ</h3>
-                  <p className="text-gray-600 text-md">
-                    Yuva Samvada creates a space for young people to engage in dialogue, exchange ideas,
-                    and take action on cultural, social, environmental, and economic issues.
                   </p>
                 </div>
               </div>

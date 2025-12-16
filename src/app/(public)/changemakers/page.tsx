@@ -38,10 +38,11 @@ const targetGroups = [
 ];
 
 export const metadata: Metadata = {
-    title: 'Young Changemakers | Abhyudaya Foundation',
+    title: 'Changemakers | Abhyudaya Foundation',
     description:
-        'Join the Young Changemakers – a youth-led initiative by Abhyudaya Foundation to lead transformation in culture, sustainability, and civic action through values-based leadership and innovation.',
+        'Join the Changemakers – a youth-led initiative by Abhyudaya Foundation to lead transformation in culture, sustainability, and civic action through values-based leadership and innovation.',
     keywords: [
+        'changemakers',
         'young changemakers',
         'youth clubs',
         'bharat youth',
@@ -53,34 +54,34 @@ export const metadata: Metadata = {
         'abhyudaya foundation',
     ],
     openGraph: {
-        title: 'Young Changemakers | Abhyudaya Foundation',
+        title: 'Changemakers | Abhyudaya Foundation',
         description:
-            'Join the Young Changemakers – a youth-led initiative by Abhyudaya Foundation to lead transformation in culture, sustainability, and civic action through values-based leadership and innovation.',
-        url: 'https://abhyudayafoundation.in/young-changemakers',
+            'Join the Changemakers – a youth-led initiative by Abhyudaya Foundation to lead transformation in culture, sustainability, and civic action through values-based leadership and innovation.',
+        url: 'https://abhyudayafoundation.in/changemakers',
         siteName: 'Abhyudaya Foundation',
         images: [
             {
                 url: '/assets/images/brand/logo_af_without_bg.png',
                 width: 1200,
                 height: 630,
-                alt: 'Young Changemakers - Abhyudaya Foundation',
+                alt: 'Changemakers - Abhyudaya Foundation',
             },
         ],
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Young Changemakers | Abhyudaya Foundation',
+        title: 'Changemakers | Abhyudaya Foundation',
         description:
             'A youth-led initiative to inspire civic action, cultural revival, and sustainability through local clubs and leadership circles.',
         images: ['/assets/images/brand/logo_af_without_bg.png'],
     },
     alternates: {
-        canonical: 'https://abhyudayafoundation.in/young-changemakers',
+        canonical: 'https://abhyudayafoundation.in/changemakers',
     },
 };
 
-export default function YoungChangemakersPage() {
+export default function ChangemakersPage() {
     return (
         <>
             <Navbar />
@@ -89,7 +90,7 @@ export default function YoungChangemakersPage() {
                 <div className="max-w-6xl mx-auto space-y-20">
                     <section className="text-center space-y-4">
                         <h1 className="text-5xl font-bold text-orange-600">
-                            Abhyudaya – Young Changemakers
+                            Abhyudaya – Changemakers
                         </h1>
                         <p className="text-xl text-gray-600 italic mt-2">
                             Where Passion Meets Purpose
@@ -104,22 +105,50 @@ export default function YoungChangemakersPage() {
                         <h2 className="text-3xl font-semibold text-center mb-10 text-gray-800">
                             🌟 The 5 Driving Principles
                         </h2>
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {initiatives.map((p, idx) => (
+
+
+                        {/* Principle-Based Initiatives */}
+                        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
+                            {initiatives.map((initiative, index) => (
                                 <div
-                                    key={idx}
-                                    className="bg-orange-50 border border-orange-200 rounded-lg p-5 shadow-sm"
+                                    key={index}
+                                    className="bg-orange-50 rounded-xl p-6 flex flex-col items-start hover:shadow-md transition-shadow duration-200"
                                 >
-                                    <h3 className="text-xl text-center font-bold text-orange-700">
-                                        {p.title}
-                                    </h3>
-                                    <p className="text-center italic text-gray-600 mb-2">{p.tagline}</p>
-                                    <p className="text-gray-700 mb-2">{p.description}</p>
-                                    <ul className="list-disc list-inside text-gray-600 text-sm">
-                                        {p.activities.map((act, i) => (
-                                            <li key={i}>{act}</li>
-                                        ))}
-                                    </ul>
+                                    {/* Header Row: Image + Title/Tagline (responsive layout) */}
+                                    <div className="flex flex-col sm:flex-row items-start w-full mb-4">
+                                        {/* Image container with fixed size */}
+                                        <div className="w-full sm:w-auto sm:h-24 flex-shrink-0 mb-2 sm:mb-0 sm:mr-4">
+                                            <img
+                                                src={initiative.image}
+                                                alt={initiative.title}
+                                                className="w-full h-full object-contain rounded-md"
+                                            />
+                                        </div>
+
+                                        {/* Title & Tagline */}
+                                        <div>
+                                            <h2 className="text-xl font-bold text-orange-700 leading-snug mb-2">
+                                                {initiative.title}
+                                            </h2>
+                                            {initiative.tagline && (
+                                                <p className="text-sm text-orange-500 font-medium leading-tight">
+                                                    {initiative.tagline}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Description */}
+                                    <p className="text-gray-700 text-md mb-2">
+                                        {initiative.description}
+                                    </p>
+
+                                    {/* Activities */}
+                                    {/* <ul className="list-disc list-inside text-gray-600 text-md">
+                                    {initiative.activities.map((act, i) => (
+                                        <li key={i}>{act}</li>
+                                    ))}
+                                </ul> */}
                                 </div>
                             ))}
                         </div>
@@ -176,7 +205,7 @@ export default function YoungChangemakersPage() {
                                 Ready to Make a Difference?
                             </h2>
                             <p className="text-gray-700 max-w-2xl mx-auto mb-6 text-lg">
-                                Start or join a <strong>Young Changemakers Circle</strong> in your campus, company, or community — and be the spark for cultural, civic, and sustainable change.
+                                Start or join a <strong>Changemakers Circle</strong> in your campus, company, or community — and be the spark for cultural, civic, and sustainable change.
                             </p>
                             <a
                                 href="https://forms.gle/YXgCGZttBHfrwMed7" target='_blank'

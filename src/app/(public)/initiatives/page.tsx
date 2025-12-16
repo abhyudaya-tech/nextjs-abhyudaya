@@ -27,7 +27,7 @@ const TechForGood: Initiative = {
         {
             title: 'Changemakers App',
             description:
-                'A platform for young changemakers to manage clubs, track events, earn badges, and collaborate locally.',
+                'A platform for changemakers to manage clubs, track events, earn badges, and collaborate locally.',
             image: '/initiatives/yuva-samvaada.png',
         },
         {
@@ -36,12 +36,12 @@ const TechForGood: Initiative = {
                 'A digital space for culture-based orgs to share events, blogs, and resources with youth-friendly features.',
             image: '/initiatives/prajnanam.png',
         },
-        {
-            title: 'Gnana Sangama',
-            description:
-                'An app curating Bharatiya knowledge systems and values for digital learning, storytelling, and exploration.',
-            image: '/initiatives/gnana-sangama.png',
-        },
+        // {
+        //     title: 'Gnana Sangama',
+        //     description:
+        //         'An app curating Bharatiya knowledge systems and values for digital learning, storytelling, and exploration.',
+        //     image: '/initiatives/gnana-sangama.png',
+        // },
     ],
 }
 
@@ -56,14 +56,14 @@ export default function InitiativesPage() {
                         Our Initiatives
                     </h1>
 
-                    {/* Young Changemakers Section */}
+                    {/* Changemakers Section */}
                     <section>
                         <div className="mb-8 bg-white border border-orange-300 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
                             <div className="flex flex-col md:flex-row items-center gap-6">
                                 <div className="w-full md:w-1/4">
                                     <Image
-                                        src="/brand/logo_af_square_without_bg.png"
-                                        alt="Young Changemakers"
+                                        src="/brand/logo_af_cm_square_without_bg.png"
+                                        alt="Changemakers"
                                         width={240}
                                         height={240}
                                         className="rounded-lg object-cover w-full h-auto"
@@ -71,13 +71,13 @@ export default function InitiativesPage() {
                                 </div>
                                 <div className="w-full md:w-3/4">
                                     <h2 className="text-3xl font-bold text-orange-600 mb-2">
-                                        Young Changemakers
+                                        Changemakers
                                     </h2>
                                     <p className="text-gray-700 mb-4">
                                         A youth-led movement to lead cultural, civic, and sustainable transformation rooted in Bharatiya values — for students, professionals, and volunteers. Join or start a club in your campus, company, or community.
                                     </p>
                                     <a
-                                        href="/young-changemakers"
+                                        href="/changemakers"
                                         className="inline-block bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-700 transition"
                                     >
                                         Know More

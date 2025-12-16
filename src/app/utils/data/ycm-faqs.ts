@@ -5,7 +5,7 @@ type FAQ = {
 
 export const ycmFAQs: FAQ[] = [
     {
-        question: 'Who can join the Young Changemakers Club?',
+        question: 'Who can join the Changemakers Club?',
         answer: 'Any student, young professional, or volunteer aligned with our vision can join.',
     },
     {
