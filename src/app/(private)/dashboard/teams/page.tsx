@@ -3,6 +3,7 @@ import { getAllTeams } from '@/lib/queries/getTeams'
 import Image from 'next/image'
 import Link from 'next/link';
 import { FaEye } from 'react-icons/fa';
+import { ReactNode } from 'react';
 
 // Define types for the team and its members
 interface Member {
@@ -42,10 +43,9 @@ export default async function TeamsPage() {
                 return a.full_name.localeCompare(b.full_name);
             });
     }
-
-    function getIcons(team: Team, member: Member): string {
-        if (team.team_lead_name === member.full_name) return '⭐';
-        if (team.coordinating_trustee_name === member.full_name) return '⚙️';
+    function getRole(team: Team, member: Member): ReactNode {
+        if (team.team_lead_name === member.full_name) return <span className="inline-block bg-orange-100 text-orange-700 text-xs font-semibold px-2 py-1 rounded-2xl">Team Lead</span>;
+        if (team.coordinating_trustee_name === member.full_name) return <span className="inline-block bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded-2xl">Coordinator</span>;
         return '';
     }
 
@@ -64,28 +64,26 @@ export default async function TeamsPage() {
     return (
         <>
             <h1 className="text-3xl font-bold mb-8 text-gray-800">Teams @Abhyudaya</h1>
-            <p className="text-gray-600 mb-6">
-                ⚙️ Coordinator | ⭐ Lead | Members
-            </p>
 
-            <div className="grid gap-3 md:grid-cols-2">
+            <div className="grid gap-3 md:grid-cols-3">
                 {teams.map((team) => (
                     <div key={team.team_id} className="bg-white border border-gray-200 rounded-xl p-3">
                         {/* Header */}
-                        <div className="flex items-center gap-4 mb-4 border-b border-gray-200 p-3">
-                            <Image
-                                src={`/teams/${team.team_name.replaceAll(' ', '-')}.jpg`}
-                                alt="Team"
-                                width={100}
-                                height={100}
-                                className="rounded-xl object-cover"
-                            />
-                            <div className="ml-2">
+                        <div className="mb-4 border-b border-gray-200">
+                            <div className="flex items-center gap-4 p-3">
+                                <Image
+                                    src={`/teams/${team.team_name.replaceAll(' ', '-')}.jpg`}
+                                    alt="Team"
+                                    width={80}
+                                    height={60}
+                                    className="rounded-xl object-cover"
+                                />
+
                                 <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-700 via-pink-600 to-orange-500 inline-block text-transparent bg-clip-text mb-2">
                                     {team.team_name}
                                 </h2>
-                                <p className="text-gray-600">{team.description}</p>
                             </div>
+                            <p className="ml-2 text-gray-600 mb-2">{team.description}</p>
                         </div>
 
                         {/* Members */}
@@ -95,7 +93,7 @@ export default async function TeamsPage() {
                                     <div className="flex justify-between items-center px-3">
                                         <div>
                                             <h3 className="font-semibold">
-                                                {member.full_name} {getIcons(team, member)}
+                                                {member.full_name} {getRole(team, member)}
                                             </h3>
                                             <p className="text-sm text-gray-500">{member.phone}</p>
                                             <p className="text-sm text-gray-500">{member.email}</p>
