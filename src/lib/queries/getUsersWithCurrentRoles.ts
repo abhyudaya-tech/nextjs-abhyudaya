@@ -23,6 +23,7 @@ export async function getUsersWithCurrentRoles(): Promise<UserWithRoleAndTeam[]>
   const { data, error } = await supabase
     .from('public_user_with_role_and_team')
     .select('*')
+    .order('full_name', { ascending: true })
 
   if (error) throw error
   return data as UserWithRoleAndTeam[]
@@ -32,6 +33,7 @@ export async function getAllUsers(): Promise<UserWithRoleAndTeam[]> {
   const { data, error } = await supabase
     .from('private_user_with_role_and_team')
     .select('*')
+    .order('full_name', { ascending: true })
 
   if (error) throw error
   return data as UserWithRoleAndTeam[]
