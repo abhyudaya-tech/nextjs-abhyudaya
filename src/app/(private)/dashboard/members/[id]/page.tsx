@@ -35,7 +35,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                         />
                         <div>
                             <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-700 via-pink-600 to-orange-500 inline-block text-transparent bg-clip-text mb-1">{user.full_name}</h2>
-                            <p className="text-orange-600 uppercase text-sm font-semibold mb-0.5">{user.role_name}</p>
+                            <p className="text-orange-600 uppercase text-sm font-semibold mb-0.5">{user.user_profile_data.role_name}</p>
                             <p className="text-gray-600 text-lg font-semibold">{user.team_name}</p>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                     {/* Right: Bio */}
                     <div className="w-2/5 border-l border-gray-200 pl-6">
                         <p className="text-gray-700">
-                            {user.role_bio?.replace('[Name]', user.full_name) || user.bio}
+                            {user.user_profile_data.role_bio?.replace('[Name]', user.full_name) || user.user_profile_data.bio}
                         </p>
                     </div>
                 </div>
@@ -60,12 +60,12 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                     </p>
                     <p className="flex items-center gap-2 mt-1">
                         <FaMapMarkerAlt className="text-gray-500" />
-                        {user.address || ''}
+                        {user.user_profile_data.address || user.user_profile_data.area_of_residence || ''}
                     </p>
                     <p className="flex items-center gap-2 mt-1">
                         <FaBirthdayCake className="text-gray-500" />
                         <span>DoB :</span>
-                        <span className="font-semibold">{formatDateToCustom(user.dob)}</span>
+                        <span className="font-semibold">{formatDateToCustom(user.user_profile_data.dob)}</span>
                     </p>
                 </div>
 
@@ -74,7 +74,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
             <div className="mt-0 grid md:grid-cols-3 gap-3">
 
                 {/* Teams */}
-                <div className="bg-white border border-gray-200 rounded-xl mb-3 p-6">
+                {user.teams && <div className="bg-white border border-gray-200 rounded-xl mb-3 p-6">
                     <h3 className="text-xl font-semibold text-gray-700 mb-4">
                         Teams ({user.teams.length})
                     </h3>
@@ -105,7 +105,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                             </li>
                         ))}
                     </ul>
-                </div>
+                </div>}
 
 
                 {/* Circles */}
@@ -114,9 +114,9 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                         Changemakers Circles ({user.circles ? user.circles.length : 0})
                     </h3>
                     <ul key="teams" className="space-y-3">
-                        {user.circles && user.circles.map((team: { id: string, name: string }) => (
+                        {user.circles && user.circles.map((circle: { id: string, name: string, role: string, is_primary:boolean }) => (
                             <li
-                                key={team.id}
+                                key={circle.id}
                                 className="flex items-center justify-between text-sm"
                             >
                                 <div className="flex items-center gap-3">
@@ -129,12 +129,12 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                                     />
 
                                     <div>
-                                        <p className="font-semibold text-gray-700">{team.name}</p>
-                                        {/* <p className="text-gray-500">{getRoleInTeam(team)}</p> */}
+                                        <p className="font-semibold text-gray-700">{circle.name}{circle.is_primary && ' ⭐'} </p>
+                                        <p className="text-gray-500 capitalize">{circle.role.replaceAll('_', ' ')}</p>
                                     </div>
                                 </div>
 
-                                <Link href={`/dashboard/changemakers/circle/${team.id}`} className="text-orange-600 hover:text-orange-800 transition">
+                                <Link href={`/dashboard/changemakers/circle/${circle.id}`} className="text-orange-600 hover:text-orange-800 transition">
                                     <FaEye className="inline-block w-5 h-5" />
                                 </Link>
                             </li>
@@ -144,7 +144,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
 
 
                 {/* Role Timeline */}
-                <div className="bg-white border border-gray-200 rounded-xl mb-4 p-6">
+                {user.roles.length > 0 && <div className="bg-white border border-gray-200 rounded-xl mb-4 p-6">
                     <h3 className="text-xl font-bold text-gray-700 mb-4">Role Timeline</h3>
                     <ul className="space-y-4 text-sm">
                         {user.roles.map((role: {
@@ -172,7 +172,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                             </li>
                         ))}
                     </ul>
-                </div>
+                </div>}
 
             </div>
         </>
