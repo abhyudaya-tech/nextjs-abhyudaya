@@ -10,12 +10,13 @@ export type UserWithRoleAndTeam = {
   address?: string;
   responsibility?: string;
   joining_date: string;
-  is_active: boolean;
   role_name: string;
   role_description?: string;
   role_bio?: string;
   team_id?: string;
   team_name?: string;
+  is_active: boolean;
+  is_public: boolean;
 };
 
 
@@ -31,7 +32,7 @@ export async function getUsersWithCurrentRoles(): Promise<UserWithRoleAndTeam[]>
 
 export async function getAllUsers(): Promise<UserWithRoleAndTeam[]> {
   const { data, error } = await supabase
-    .from('private_user_with_role_and_team')
+    .from('user_with_role_and_team')
     .select('*')
     .order('full_name', { ascending: true })
 
