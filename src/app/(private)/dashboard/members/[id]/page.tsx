@@ -86,7 +86,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                             >
                                 <div className="flex items-center gap-3">
                                     <Image
-                                        src={`/teams/${team.name.replaceAll(' ','-')}.jpg`}
+                                        src={`/teams/${team.name.replaceAll(' ', '-')}.jpg`}
                                         alt="Profile"
                                         width={60}
                                         height={60}
@@ -100,6 +100,41 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
                                 </div>
 
                                 <Link href={`/dashboard/teams`} className="text-orange-600 hover:text-orange-800 transition">
+                                    <FaEye className="inline-block w-5 h-5" />
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+
+                {/* Circles */}
+                <div className="bg-white border border-gray-200 rounded-xl mb-3 p-6">
+                    <h3 className="text-xl font-semibold text-gray-700 mb-4">
+                        Changemakers Circles ({user.circles ? user.circles.length : 0})
+                    </h3>
+                    <ul key="teams" className="space-y-3">
+                        {user.circles && user.circles.map((team: { id: string, name: string }) => (
+                            <li
+                                key={team.id}
+                                className="flex items-center justify-between text-sm"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <Image
+                                        src="/brand/logo_af_cm_square_without_bg.png"
+                                        alt="Profile"
+                                        width={60}
+                                        height={60}
+                                        className="rounded-xl object-cover"
+                                    />
+
+                                    <div>
+                                        <p className="font-semibold text-gray-700">{team.name}</p>
+                                        {/* <p className="text-gray-500">{getRoleInTeam(team)}</p> */}
+                                    </div>
+                                </div>
+
+                                <Link href={`/dashboard/changemakers/circle/${team.id}`} className="text-orange-600 hover:text-orange-800 transition">
                                     <FaEye className="inline-block w-5 h-5" />
                                 </Link>
                             </li>

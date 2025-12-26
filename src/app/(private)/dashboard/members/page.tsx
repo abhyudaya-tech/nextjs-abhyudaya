@@ -39,7 +39,7 @@ export default async function AboutPage() {
                             <tr>
                                 <th className="px-4 py-3 text-left">Name</th>
                                 <th className="px-4 py-3 text-center">Phone</th>
-                                <th className="px-4 py-3 text-center">Role & Team</th>
+                                <th className="px-4 py-3 text-center">Role / Team</th>
                                 <th className="px-4 py-3 text-center">Joined On</th>
                                 <th className="px-4 py-3 text-center">View</th>
                             </tr>
