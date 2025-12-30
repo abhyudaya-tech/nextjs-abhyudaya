@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { User } from '@supabase/supabase-js'
 import { FaClipboardList, FaUsers, FaUser, FaChartBar, FaUserFriends, FaRupeeSign } from 'react-icons/fa'
+import LogoutButton from './LogoutButton'
 
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: <FaChartBar /> },
@@ -51,8 +52,8 @@ export default function SecureSidebar(user: User) {
               <Link
                 href={item.href}
                 className={`flex items-center px-3 py-2 rounded-lg transition-colors ${pathname === item.href
-                    ? 'bg-orange-100 text-orange-700'
-                    : 'hover:bg-orange-200 hover:text-orange-700'
+                  ? 'bg-orange-100 text-orange-700'
+                  : 'hover:bg-orange-200 hover:text-orange-700'
                   }`}
               >
                 <span className="text-lg mr-3">{item.icon}</span>
@@ -61,17 +62,16 @@ export default function SecureSidebar(user: User) {
             </li>
           ))}
         </ul>
-
-        <div className="mt-4 border-t pt-4 text-xs text-white uppercase">My Account</div>
-        <ul className="mt-2 space-y-2 text-white text-sm font-medium">
-          <li>
-            <Link href="/dashboard/profile" className="flex items-center px-3 py-2 hover:bg-orange-200 hover:text-orange-700 rounded-lg">
-              <FaUser className="mr-3 text-lg" />
-              My Profile
-            </Link>
-          </li>
-        </ul>
       </nav>
+
+      {/* Bottom Section */}
+      <div className="pt-4 border-t border-gray-600 space-y-3">
+        <Link href="/dashboard/profile" className="flex items-center px-3 py-2 text-white text-sm font-medium hover:bg-orange-200 hover:text-orange-700 rounded-lg transition-colors">
+          <FaUser className="mr-3 text-lg" />
+          My Profile
+        </Link>
+        <LogoutButton />
+      </div>
     </aside>
   )
 }

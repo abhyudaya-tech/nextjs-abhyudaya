@@ -3,26 +3,46 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/lib/AuthContext'
+import Image from 'next/image'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [otp, setOtp] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  const [isSignUp, setIsSignUp] = useState(false)
+  const [otpSent, setOtpSent] = useState(false)
   
-  const { signIn, signUp } = useAuth()
+  const { sendOtp, verifyOtp } = useAuth()
   const router = useRouter()
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
 
     try {
-      const { error } = isSignUp 
-        ? await signUp(email, password)
-        : await signIn(email, password)
+      const { error } = await sendOtp(email)
+
+      if (error) {
+        setError(error.message)
+      } else {
+        setOtpSent(true)
+      }
+    } catch (err) {
+      setError('An unexpected error occurred')
+      console.error(err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setError('')
+
+    try {
+      const { error } = await verifyOtp(email, otp)
 
       if (error) {
         setError(error.message)
@@ -38,65 +58,132 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {isSignUp ? 'Create your account' : 'Sign in to your account'}
-          </h2>
-        </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/auth-bg.svg")',
+          backgroundColor: '#1f2937',
+        }}
+      />
+      
+      {/* Subtle overlay for better card visibility */}
+      <div className="absolute inset-0 bg-black/20 -z-10" />
+
+      <div className="w-full max-w-md px-4">
+        {/* Glass Card */}
+        <div className="backdrop-blur-xl bg-white/30 rounded-3xl shadow-2xl p-8 border border-white/20">
+          
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <div className="relative w-48 h-48 rounded-full bg-white flex items-center justify-center shadow-lg">
+              <Image
+                src="/brand/logo_af_square_without_bg.png"
+                alt="Abhyudaya Logo"
+                width={160}
+                height={160}
+                className="rounded-full"
               />
             </div>
           </div>
 
-          {error && (
-            <div className="text-red-600 text-sm text-center">{error}</div>
-          )}
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              {otpSent ? 'Verify OTP' : 'Welcome Back'}
+            </h1>
+            <p className="text-sm text-gray-700">
+              {otpSent ? `We sent a code to ${email}` : 'Sign in to access your account'}
+            </p>
+          </div>
 
-          <div>
+          {/* Form */}
+          <form className="space-y-6" onSubmit={otpSent ? handleVerifyOtp : handleSendOtp}>
+            {!otpSent ? (
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-800 mb-2">
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  className="w-full px-4 py-3 bg-white/50 border border-white/20 rounded-xl text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white/80 transition-all duration-200"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            ) : (
+              <div>
+                <label htmlFor="otp" className="block text-sm font-medium text-gray-800 mb-2">
+                  Enter OTP Code
+                </label>
+                <input
+                  id="otp"
+                  name="otp"
+                  type="text"
+                  required
+                  maxLength={6}
+                  className="w-full px-4 py-4 bg-white/50 border border-white/20 rounded-xl text-gray-900 placeholder-gray-600 text-center text-3xl tracking-widest font-mono focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white/80 transition-all duration-200"
+                  placeholder="000000"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
+                />
+              </div>
+            )}
+
+            {error && (
+              <div className="p-4 bg-red-500/20 border border-red-300/50 rounded-lg">
+                <p className="text-sm text-red-700 font-medium">{error}</p>
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+              className="w-full py-3 px-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Loading...' : (isSignUp ? 'Sign up' : 'Sign in')}
+              {isLoading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  Loading...
+                </span>
+              ) : (
+                otpSent ? 'Verify OTP' : 'Send OTP'
+              )}
             </button>
-          </div>
 
-          <div className="text-center">
-            <button
-              type="button"
-              onClick={() => setIsSignUp(!isSignUp)}
-              className="text-indigo-600 hover:text-indigo-500"
-            >
-              {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
-            </button>
+            {otpSent && (
+              <button
+                type="button"
+                onClick={() => {
+                  setOtpSent(false)
+                  setOtp('')
+                  setError('')
+                }}
+                className="w-full py-3 px-4 bg-white/30 hover:bg-white/50 text-gray-900 font-medium rounded-xl transition-all duration-200 border border-white/20 hover:border-white/40"
+              >
+                Use Different Email
+              </button>
+            )}
+          </form>
+
+          {/* Footer */}
+          <div className="mt-8 pt-6 border-t border-white/20">
+            <p className="text-center text-xs text-gray-700">
+              By signing in, you agree to our{' '}
+              <a href="#" className="text-orange-600 hover:text-orange-700 font-medium">
+                Terms of Service
+              </a>
+            </p>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   )
