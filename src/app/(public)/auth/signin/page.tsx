@@ -12,7 +12,7 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [otpSent, setOtpSent] = useState(false)
   
-  const { sendOtp, verifyOtp } = useAuth()
+  const { sendOtp, verifyOtp, user } = useAuth()
   const router = useRouter()
 
   const handleSendOtp = async (e: React.FormEvent) => {
@@ -21,17 +21,25 @@ export default function LoginPage() {
     setError('')
 
     try {
+      if (!email) {
+        setError('Please enter your email address')
+        setIsLoading(false)
+        return
+      }
+
       const { error } = await sendOtp(email)
 
       if (error) {
-        setError(error.message)
+        setError(error.message || 'Failed to send OTP. Please try again.')
+        setIsLoading(false)
       } else {
         setOtpSent(true)
+        setIsLoading(false)
       }
     } catch (err) {
-      setError('An unexpected error occurred')
-      console.error(err)
-    } finally {
+      const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred'
+      setError(errorMessage)
+      console.error('Send OTP error:', err)
       setIsLoading(false)
     }
   }
@@ -42,17 +50,45 @@ export default function LoginPage() {
     setError('')
 
     try {
+      if (!email || !otp) {
+        setError('Please enter both email and OTP')
+        setIsLoading(false)
+        return
+      }
+
+      console.log('Verifying OTP for email:', email)
       const { error } = await verifyOtp(email, otp)
+      console.log('Verify OTP response - error:', error)
 
       if (error) {
-        setError(error.message)
+        const errorMsg = error instanceof Error ? error.message : JSON.stringify(error)
+        setError(errorMsg || 'Failed to verify OTP. Please try again.')
+        setIsLoading(false)
       } else {
-        router.push('/dashboard')
+        // Verification successful
+        console.log('OTP verified successfully, user:', user)
+        
+        // Wait a bit for the auth state to update
+        let attempts = 0
+        const maxAttempts = 20 // Max 4 seconds (200ms * 20)
+        
+        const waitForAuth = setInterval(() => {
+          attempts++
+          if (user) {
+            clearInterval(waitForAuth)
+            console.log('User authenticated, redirecting...')
+            router.push('/dashboard')
+          } else if (attempts >= maxAttempts) {
+            clearInterval(waitForAuth)
+            console.warn('Timeout waiting for auth state, redirecting anyway...')
+            router.push('/dashboard')
+          }
+        }, 200)
       }
     } catch (err) {
-      setError('An unexpected error occurred')
-      console.error(err)
-    } finally {
+      const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred'
+      setError(errorMessage)
+      console.error('OTP verification error:', err)
       setIsLoading(false)
     }
   }
