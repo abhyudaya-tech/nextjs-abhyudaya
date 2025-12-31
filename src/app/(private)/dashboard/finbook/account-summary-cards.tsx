@@ -1,20 +1,5 @@
+import { Transaction } from '@/lib/queries/getTransactions'
 import { FaArrowUp, FaArrowDown, FaEquals } from 'react-icons/fa'
-
-interface Transaction {
-  id: string
-  transaction_date: string
-  transaction_type: 'Income' | 'Expense'
-  transaction_category: string
-  description: string
-  party: string
-  party_details: string
-  account_type: string
-  amount: number
-  notes: string
-  approved_by: string | null
-  updated_by: string
-  updated_on: string
-}
 
 interface AccountSummary {
   name: string
@@ -35,21 +20,21 @@ const AccountSummaryCards = ({ transactions }: AccountSummaryCardsProps) => {
     const accountTransactions = transactions.filter((t) => t.account_type === accountName)
     return {
       income: accountTransactions
-        .filter((t) => t.transaction_type === 'Income')
+        .filter((t) => t.transaction_type === 'income')
         .reduce((sum, t) => sum + t.amount, 0),
       expense: accountTransactions
-        .filter((t) => t.transaction_type === 'Expense')
+        .filter((t) => t.transaction_type === 'expense')
         .reduce((sum, t) => sum + t.amount, 0),
     }
   }
 
-  const official = calculateAccountSummary('Official - Canara')
-  const private_ = calculateAccountSummary('Private - PayTM')
+  const official = calculateAccountSummary('official_Canara')
+  const private_ = calculateAccountSummary('private_paytm')
   const overallIncome = transactions
-    .filter((t) => t.transaction_type === 'Income')
+    .filter((t) => t.transaction_type === 'income')
     .reduce((sum, t) => sum + t.amount, 0)
   const overallExpense = transactions
-    .filter((t) => t.transaction_type === 'Expense')
+    .filter((t) => t.transaction_type === 'expense')
     .reduce((sum, t) => sum + t.amount, 0)
 
   const accounts: AccountSummary[] = [

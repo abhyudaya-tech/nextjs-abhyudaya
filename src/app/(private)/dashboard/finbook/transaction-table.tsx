@@ -2,22 +2,8 @@
 import { FaEdit, FaTrash, FaEye, FaCheck, FaTimes } from 'react-icons/fa'
 import React, { useState } from 'react'
 import { FaXmark } from 'react-icons/fa6';
-
-interface Transaction {
-    id: string
-    transaction_date: string
-    transaction_type: 'Income' | 'Expense'
-    transaction_category: string
-    description: string
-    party: string
-    party_details: string
-    account_type: string
-    amount: number
-    notes: string
-    approved_by: string | null
-    updated_by: string
-    updated_on: string
-}
+import { Transaction, TRANSACTIONS_LABEL_MAP } from '@/lib/queries/getTransactions';
+import { formatDateToCustom } from '@/app/utils/date-formatters';
 
 interface TransactionTableProps {
     transactions: Transaction[]
@@ -71,9 +57,8 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
         <>
             {/* Toast Notification */}
             {toast && (
-                <div className={`fixed top-4 right-4 px-6 py-3 rounded-lg text-white text-sm font-medium shadow-lg z-50 ${
-                    toast.type === 'error' ? 'bg-red-500' : 'bg-green-500'
-                }`}>
+                <div className={`fixed top-4 right-4 px-6 py-3 rounded-lg text-white text-sm font-medium shadow-lg z-50 ${toast.type === 'error' ? 'bg-red-500' : 'bg-green-500'
+                    }`}>
                     {toast.message}
                 </div>
             )}
@@ -95,25 +80,23 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Date</p>
-                                    <p className="text-lg font-semibold text-gray-800">{selectedTransaction.transaction_date}</p>
+                                    <p className="text-lg font-semibold text-gray-800">{formatDateToCustom(selectedTransaction.transaction_date)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Type</p>
-                                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
-                                        getTransactionTypeColor(selectedTransaction.transaction_type)
-                                    }`}>{selectedTransaction.transaction_type}</span>
+                                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${getTransactionTypeColor(selectedTransaction.transaction_type)} capitalize`}>{selectedTransaction.transaction_type}</span>
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Category</p>
-                                    <p className="text-lg font-semibold text-gray-800">{selectedTransaction.transaction_category}</p>
+                                    <p className="text-lg font-semibold text-gray-800">{TRANSACTIONS_LABEL_MAP[selectedTransaction.transaction_category] || selectedTransaction.transaction_category.replaceAll('_', ' ')}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Amount</p>
                                     <p className={`text-lg font-bold ${getAmountColor(selectedTransaction.transaction_type)}`}>
-                                        {selectedTransaction.transaction_type === 'Income' ? '+' : '-'}{formatCurrency(selectedTransaction.amount)}
+                                        {selectedTransaction.transaction_type === 'income' ? '+' : '-'}{formatCurrency(selectedTransaction.amount)}
                                     </p>
                                 </div>
                             </div>
@@ -132,14 +115,14 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Account Type</p>
-                                    <p className="text-gray-700">{selectedTransaction.account_type}</p>
+                                    <p className="text-gray-700">{TRANSACTIONS_LABEL_MAP[selectedTransaction.account_type] || selectedTransaction.account_type.replaceAll('_', ' ')}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Approval</p>
                                     {selectedTransaction.approved_by ? (
                                         <div className="flex items-center gap-2">
                                             <FaCheck className="w-4 h-4 text-green-600" />
-                                            <span className="text-green-700 font-medium">{selectedTransaction.approved_by}</span>
+                                            <span className="text-green-700 font-medium">{selectedTransaction.approved_by.full_name}</span>
                                         </div>
                                     ) : (
                                         <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-xs font-semibold">
@@ -157,11 +140,11 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
                             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200">
                                 <div>
                                     <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Updated By</p>
-                                    <p className="text-gray-700">{selectedTransaction.updated_by}</p>
+                                    <p className="text-gray-700">{selectedTransaction.updated_by.full_name}</p>
                                 </div>
                                 <div>
-                                    <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Updated On</p>
-                                    <p className="text-gray-700">{selectedTransaction.updated_on}</p>
+                                    <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Updated At</p>
+                                    <p className="text-gray-700">{formatDateToCustom(selectedTransaction.updated_at)}</p>
                                 </div>
                             </div>
                         </div>
@@ -216,20 +199,20 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
                                 <tr key={transaction.id} className="hover:bg-gray-50 transition cursor-pointer" onClick={() => handleViewDetails(transaction)}>
                                     <td className="px-6 py-4 whitespace-nowrap text-center">
                                         <div>
-                                            <p className="text-sm mb-1 text-gray-700">{transaction.transaction_date}</p>
-                                            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs ${getTransactionTypeColor(transaction.transaction_type)}`}>
+                                            <p className="text-sm mb-1 text-gray-700">{formatDateToCustom(transaction.transaction_date)}</p>
+                                            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs ${getTransactionTypeColor(transaction.transaction_type)} capitalize`}>
                                                 {transaction.transaction_type}
                                             </span>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
                                         <div className="space-y-1">
-                                            <p className="font-medium text-gray-700 truncate">{transaction.transaction_category}</p>
+                                            <p className="font-medium text-gray-700 truncate capitalize">{TRANSACTIONS_LABEL_MAP[transaction.transaction_category] || transaction.transaction_category.replaceAll('_', ' ')}</p>
                                             <p className="text-xs text-gray-400 line-clamp-2">{transaction.description}</p>
                                         </div>
                                     </td>
                                     <td className={`px-6 py-4 whitespace-nowrap text-sm text-right ${getAmountColor(transaction.transaction_type)}`}>
-                                        {transaction.transaction_type === 'Income' ? '+' : '-'}{formatCurrency(transaction.amount)}
+                                        {transaction.transaction_type === 'income' ? '+' : '-'}{formatCurrency(transaction.amount)}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
                                         <div className="space-y-1">
@@ -238,13 +221,13 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                                        {transaction.account_type}
+                                        {TRANSACTIONS_LABEL_MAP[transaction.account_type] || transaction.account_type.replaceAll('_', ' ')}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         {transaction.approved_by ? (
                                             <div className="flex items-center gap-2">
                                                 <FaCheck className="w-4 h-4 text-green-600" />
-                                                <span className="text-sm text-green-700 font-medium">{transaction.approved_by}</span>
+                                                <span className="text-sm text-green-700 font-medium">{transaction.approved_by.full_name}</span>
                                             </div>
                                         ) : (
                                             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-xs font-semibold">
