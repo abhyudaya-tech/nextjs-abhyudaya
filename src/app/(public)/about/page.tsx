@@ -36,9 +36,10 @@ export default async function AboutPage() {
                             <div>
                                 <h2 className="text-3xl font-semibold text-gray-700 mb-4">About Us</h2>
                                 <p className="text-gray-700 text-lg leading-relaxed text-justify">
-                                    &emsp;&emsp;&emsp;Abhyudaya Foundation is a Bengaluru‑based, youth‑led volunteer movement dedicated to fostering a stronger Bharat through cultural revival, civic engagement, and tech‑driven social impact. “Abhyudaya” means “rising” or “upliftment” - reflecting our mission to awaken self‑awareness and shared responsibility among India’s youth.
+                                    &emsp;&emsp;&emsp;Abhyudaya Foundation is a Bengaluru-based, values-driven social institution committed to nation-building through civic leadership, cultural rootedness, and structured social action. Rooted in Bharatiya civilizational values, the Foundation serves as a platform for designing, governing, and enabling long-term initiatives that strengthen citizenship, community responsibility, and ethical leadership across India.
                                     <br /><br />
-                                    &emsp;&emsp;&emsp;We believe that by combining technology, cultural experiences, and a deep sense of pride in our heritage, we can forge a brighter future for our nation. Join us on this remarkable journey as we work together to bring our values to life. Together, we can shape a better tomorrow for our “Bharat”.
+                                    &emsp;&emsp;&emsp;The word Abhyudaya means rising or upliftment — reflecting our belief that national transformation begins with individual consciousness, collective responsibility, and disciplined action.
+                                    We believe that by combining technology, cultural experiences, and a deep sense of pride in our heritage, we can forge a brighter future for our nation.
                                 </p>
                             </div>
 
@@ -58,19 +59,20 @@ export default async function AboutPage() {
                     {/* Mission & Vision Stripe */}
                     <section className="mt-8 bg-orange-50 py-12 px-4">
                         <div className="max-w-6xl mx-auto grid md:grid-cols-2 md:gap-30 gap-10 items-start text-center md:text-left">
-                            {/* Mission */}
-                            <div className="text-center">
-                                <h3 className="text-xl font-semibold text-orange-700 mb-2">🎯 Our Mission</h3>
-                                <p className="text-gray-700 leading-relaxed">
-                                    Empowering youth to drive cultural revival, civic engagement, and tech-driven social impact, fostering a stronger Bharat.
-                                </p>
-                            </div>
 
                             {/* Vision */}
                             <div className="text-center">
                                 <h3 className="text-xl font-semibold text-orange-700 mb-2">👁️ Our Vision</h3>
                                 <p className="text-gray-700 leading-relaxed">
-                                    A Bharat where people united by heritage and innovation, lead sustainable & impactful change for a brighter future.
+                                    A strong and self-aware Bharat, where citizens united by heritage and innovation lead sustainable, ethical, and impactful change.
+                                </p>
+                            </div>
+
+                            {/* Mission */}
+                            <div className="text-center">
+                                <h3 className="text-xl font-semibold text-orange-700 mb-2">🎯 Our Mission</h3>
+                                <p className="text-gray-700 leading-relaxed">
+                                    To build and enable values-driven civic leadership across society by empowering youth, professionals, and communities through culture, citizenship, sustainability, and technology.
                                 </p>
                             </div>
                         </div>

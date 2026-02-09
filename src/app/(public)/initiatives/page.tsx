@@ -1,7 +1,6 @@
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import Image from 'next/image'
-import { initiatives } from '@/app/utils/data/initiatives'
 
 type Project = {
     title: string
@@ -58,6 +57,7 @@ export default function InitiativesPage() {
 
                     {/* Changemakers Section */}
                     <section>
+
                         <div className="mb-8 bg-white border border-orange-300 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
                             <div className="flex flex-col md:flex-row items-center gap-6">
                                 <div className="w-full md:w-1/4">
@@ -73,66 +73,29 @@ export default function InitiativesPage() {
                                     <h2 className="text-3xl font-bold text-orange-600 mb-2">
                                         Changemakers
                                     </h2>
-                                    <p className="text-gray-700 mb-4">
-                                        A youth-led movement to lead cultural, civic, and sustainable transformation rooted in Bharatiya values — for students, professionals, and volunteers. Join or start a club in your campus, company, or community.
+                                    <p className="text-gray-700 mb-4 text-justify px-2">
+                                        &emsp;&emsp;&emsp;A values-driven, nation-building movement that enables citizens to actively participate in shaping a stronger, more responsible, and self-aware Bharat. Powered by <span className="font-semibold">Abhyudaya Foundation</span>, Changemakers provides a structured pathway for students, professionals, and communities to translate Bharatiya values into meaningful cultural, civic, and sustainable action.
                                     </p>
-                                    <a
-                                        href="/changemakers"
-                                        className="inline-block bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-700 transition"
-                                    >
-                                        Know More
-                                    </a>
+
+                                    <div className="flex flex-col sm:flex-row justify-center gap-4 text-center">
+                                        <a
+                                            href="/changemakers"
+                                            className="inline-block bg-orange-600 text-white px-16 py-2 rounded-full hover:bg-orange-700 transition"
+                                        >
+                                            Know More
+                                        </a>
+
+                                        <a
+                                            href="https://play.google.com/store/apps/details?id=in.abhyudayafoundation.changemakers"
+                                            className="inline-block border border-orange-600 text-orange-600 px-16 py-2 rounded-full hover:bg-orange-600 hover:text-white transition"
+                                            target="_blank"
+                                        >
+                                            Explore the App
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        {/* Principle-Based Initiatives */}
-                        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
-                            {initiatives.map((initiative, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-orange-50 rounded-xl p-6 flex flex-col items-start hover:shadow-md transition-shadow duration-200"
-                                >
-                                    {/* Header Row: Image + Title/Tagline (responsive layout) */}
-                                    <div className="flex flex-col sm:flex-row items-start w-full mb-4">
-                                        {/* Image container with fixed size */}
-                                        <div className="w-full sm:w-auto sm:h-24 flex-shrink-0 mb-2 sm:mb-0 sm:mr-4">
-                                            <img
-                                                src={initiative.image}
-                                                alt={initiative.title}
-                                                className="w-full h-full object-contain rounded-md"
-                                            />
-                                        </div>
-
-                                        {/* Title & Tagline */}
-                                        <div>
-                                            <h2 className="text-xl font-bold text-orange-700 leading-snug mb-2">
-                                                {initiative.title}
-                                            </h2>
-                                            {initiative.tagline && (
-                                                <p className="text-sm text-orange-500 font-medium leading-tight">
-                                                    {initiative.tagline}
-                                                </p>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    {/* Description */}
-                                    <p className="text-gray-700 text-md mb-2">
-                                        {initiative.description}
-                                    </p>
-
-                                    {/* Activities */}
-                                    {/* <ul className="list-disc list-inside text-gray-600 text-md">
-                                    {initiative.activities.map((act, i) => (
-                                        <li key={i}>{act}</li>
-                                    ))}
-                                </ul> */}
-                                </div>
-                            ))}
-                        </div>
-
-
                     </section>
 
                     {/* Tech For Good */}

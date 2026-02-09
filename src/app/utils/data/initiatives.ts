@@ -11,7 +11,7 @@ export const initiatives: Initiatives[] = [
     title: 'Samskruti – Rooted in Culture',
     tagline: 'Nurturing Values Through Culture',
     description:
-      'Promotes family values, ethics, and cultural pride as the foundation for righteous living. Fosters personality development, moral clarity, and respect for heritage through traditions, rituals, arts, and inner discipline.',
+      'Focuses on cultural grounding as the foundation of ethical living and leadership. It nurtures family values, discipline, and pride in heritage while encouraging reflection and moral clarity.',
     image: '/initiatives/samskruthi.png',
     activities: [
       'Cultural storytelling',
@@ -23,13 +23,27 @@ export const initiatives: Initiatives[] = [
     title: 'Swadeshi – Self-Reliance',
     tagline: 'Think Global, Act Local',
     description:
-      'Inspires pride in Bharatiya innovation, entrepreneurship, and local economy. Encourages mindful consumption and support for locally made products and community-driven solutions.',
+      'Promotes economic responsibility, local innovation, and mindful consumption. It encourages participants to support community-driven solutions and Bharatiya entrepreneurship.',
     image: '/initiatives/swadeshi.png',
     activities: [
       'Promoting Swadeshi',
       'Swadeshi expos',
       'Local business volunteering',
       'Skill-sharing events',
+    ],
+  },
+  {
+    title: 'Prakriti – For a Sustainable Today',
+    tagline: 'Acting Now, Shaping Tomorrow',
+    description:
+      'Cultivates environmental stewardship and sustainability literacy, emphasizing daily responsibility toward natural resources.',
+    image: '/initiatives/prakriti.png',
+    activities: [
+      'Promoting Desi Gou Economy',
+      'Plantation drives',
+      'Eco-competitions',
+      'Composting workshops',
+      'Plastic-free challenges',
     ],
   },
   {
@@ -45,31 +59,19 @@ export const initiatives: Initiatives[] = [
       'Social Participation',
     ],
   },
-  {
-    title: 'Prakriti – For a Sustainable Today',
-    tagline: 'Acting Now, Shaping Tomorrow',
-    description:
-      'Promotes eco-conscious living through tree planting, waste reduction, water conservation, and climate literacy. Encourages stewardship of natural resources and responsible habits.',
-    image: '/initiatives/prakriti.png',
-    activities: [
-      'Promoting Desi Gou Economy',
-      'Plantation drives',
-      'Eco-competitions',
-      'Composting workshops',
-      'Plastic-free challenges',
-    ],
-  },
-  {
-    title: 'Yuva Samvada – Leadership & Innovation',
-    tagline: 'Lead with Values. Create with Vision.',
-    description:
-      'Empowers youth to lead with integrity through mentorship, project-based learning, and collaborative initiatives. Encourages critical thinking, creativity, and teamwork rooted in Indian ethos.',
-    image: '/initiatives/yuva-samvaada.png',
-    activities: [
-      'Value-based discussions',
-      'Youth parliaments',
-      'Hackathons',
-      'Innovation challenges',
-    ],
-  },
 ];
+
+export const yuvaSamvaada: Initiatives =
+{
+  title: 'Yuva Samvada – Leadership & Innovation',
+  tagline: 'Lead with Values. Create with Vision.',
+  description:
+    'Empowers youth to lead with integrity through mentorship, project-based learning, and collaborative initiatives. Encourages critical thinking, creativity, and teamwork rooted in Indian ethos.',
+  image: '/initiatives/yuva-samvaada.png',
+  activities: [
+    'Value-based discussions',
+    'Youth parliaments',
+    'Hackathons',
+    'Innovation challenges',
+  ],
+};

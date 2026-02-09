@@ -8,7 +8,7 @@ export default function BlogPage() {
       <main className="min-h-screen bg-white py-8 px-4">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-800 mb-12 text-center">
-            Blogs & Stories
+            Stories & Impact
           </h1>
           <FeaturedPosts />
         </div>

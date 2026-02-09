@@ -57,9 +57,10 @@ export default function HomePage() {
             <div>
               <h2 className="text-3xl font-semibold text-orange-400 mb-4">About Us</h2>
               <p className="text-gray-700 text-lg leading-relaxed text-justify">
-                &emsp;&emsp;&emsp;Abhyudaya Foundation is a Bengaluru‑based, youth‑led volunteer movement dedicated to fostering a stronger Bharat through cultural revival, civic engagement, and tech‑driven social impact. “Abhyudaya” means “rising” or “upliftment” - reflecting our mission to awaken self‑awareness and shared responsibility among India’s youth.
+                &emsp;&emsp;&emsp;Abhyudaya Foundation is a Bengaluru-based, values-driven social institution committed to nation-building through civic leadership, cultural rootedness, and structured social action. Rooted in Bharatiya civilizational values, the Foundation serves as a platform for designing, governing, and enabling long-term initiatives that strengthen citizenship, community responsibility, and ethical leadership across India.
                 <br /><br />
-                &emsp;&emsp;&emsp;We believe that by combining technology, cultural experiences, and a deep sense of pride in our heritage, we can forge a brighter future for our nation. Join us on this remarkable journey as we work together to bring our values to life. Together, we can shape a better tomorrow for our “Bharat”.
+                &emsp;&emsp;&emsp;The word Abhyudaya means rising or upliftment — reflecting our belief that national transformation begins with individual consciousness, collective responsibility, and disciplined action.
+                We believe that by combining technology, cultural experiences, and a deep sense of pride in our heritage, we can forge a brighter future for our nation.
               </p>
               <div className="mt-6">
                 <Link
@@ -87,19 +88,20 @@ export default function HomePage() {
         {/* Mission & Vision Stripe */}
         <section className="mt-8 bg-orange-50 py-12 px-4">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 md:gap-30 gap-10 items-start text-center md:text-left">
-            {/* Mission */}
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-orange-700 mb-2">🎯 Our Mission</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Empowering youth to drive cultural revival, civic engagement, and tech-driven social impact, fostering a stronger Bharat.
-              </p>
-            </div>
 
             {/* Vision */}
             <div className="text-center">
               <h3 className="text-xl font-semibold text-orange-700 mb-2">👁️ Our Vision</h3>
               <p className="text-gray-700 leading-relaxed">
-                A Bharat where people united by heritage and innovation, lead sustainable & impactful change for a brighter future.
+                A strong and self-aware Bharat, where citizens united by heritage and innovation lead sustainable, ethical, and impactful change.
+              </p>
+            </div>
+
+            {/* Mission */}
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-orange-700 mb-2">🎯 Our Mission</h3>
+              <p className="text-gray-700 leading-relaxed">
+                To build and enable values-driven civic leadership across society by empowering youth, professionals, and communities through culture, citizenship, sustainability, and technology.
               </p>
             </div>
           </div>
@@ -111,11 +113,49 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-center text-orange-400 mb-12">
               Our Initiatives
             </h2>
-            
-            <Link href="/initiatives">
-              <div className="grid md:grid-cols-3 gap-3">
-                {/* Card 1: TechForGood */}
-                <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
+
+            <div className="mb-8 bg-white border border-orange-300 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="w-full md:w-1/4">
+                  <Image
+                    src="/brand/logo_af_cm_square_without_bg.png"
+                    alt="Changemakers"
+                    width={240}
+                    height={240}
+                    className="rounded-lg object-cover w-full h-auto"
+                  />
+                </div>
+                <div className="w-full md:w-3/4">
+                  <h2 className="text-3xl font-bold text-orange-600 mb-2">
+                    Changemakers
+                  </h2>
+                  <p className="text-gray-700 mb-4 text-justify px-2">
+                    &emsp;&emsp;&emsp;A values-driven, nation-building movement that enables citizens to actively participate in shaping a stronger, more responsible, and self-aware Bharat. Powered by <span className="font-semibold">Abhyudaya Foundation</span>, Changemakers provides a structured pathway for students, professionals, and communities to translate Bharatiya values into meaningful cultural, civic, and sustainable action.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row justify-center gap-4 text-center">
+                    <a
+                      href="/changemakers"
+                      className="inline-block bg-orange-600 text-white px-16 py-2 rounded-full hover:bg-orange-700 transition"
+                    >
+                      Know More
+                    </a>
+
+                    <a
+                      href="https://play.google.com/store/apps/details?id=in.abhyudayafoundation.changemakers"
+                      className="inline-block border border-orange-600 text-orange-600 px-16 py-2 rounded-full hover:bg-orange-600 hover:text-white transition"
+                      target="_blank"
+                    >
+                      Explore the App
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-3">
+              {/* Card 1: TechForGood */}
+              {/* <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
                   <div className="relative w-full h-40 mb-4">
                     <Image
                       src="/brand/logo_af_cm_square_without_bg.png"
@@ -128,43 +168,42 @@ export default function HomePage() {
                   <p className="text-gray-600 text-md">
                     A youth-led movement to lead cultural, civic, and sustainable transformation rooted in Bharatiya values, for students, professionals, and volunteers.
                   </p>
-                </div>
+                </div> */}
 
-                {/* Card 2: Samskruti Sahal */}
-                <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
-                  <div className="relative w-full h-40 mb-4">
-                    <Image
-                      src="/initiatives/tech-for-good.png"
-                      alt="TechForGood"
-                      fill
-                      className="object-contain rounded"
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">#TechForGood</h3>
-                  <p className="text-gray-600 text-md">
-                    An initiative where technology is harnessed to solve cultural, social, environmental,
-                    and economic challenges, by bridging innovation with social impact.
-                  </p>
+              {/* Card 2: Samskruti Sahal */}
+              <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
+                <div className="relative w-full h-40 mb-4">
+                  <Image
+                    src="/initiatives/tech-for-good.png"
+                    alt="TechForGood"
+                    fill
+                    className="object-contain rounded"
+                  />
                 </div>
-
-                {/* Card 3: Yuva Samvada */}
-                <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
-                  <div className="relative w-full h-40 mb-4">
-                    <Image
-                      src="/initiatives/samskruthi.png"
-                      alt="Samskruti Sahal"
-                      fill
-                      className="object-cover rounded"
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">ಸಂಸ್ಕೃತಿ ಸಹಲ್</h3>
-                  <p className="text-gray-600 text-md">
-                    Samskruti Sahal celebrates cultural diversity and heritage, inviting individuals
-                    on a journey through traditional arts, music, and history.
-                  </p>
-                </div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">#TechForGood</h3>
+                <p className="text-gray-600 text-md">
+                  An initiative where technology is harnessed to solve cultural, social, environmental,
+                  and economic challenges, by bridging innovation with social impact.
+                </p>
               </div>
-            </Link>
+
+              {/* Card 3: Yuva Samvada */}
+              <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
+                <div className="relative w-full h-40 mb-4">
+                  <Image
+                    src="/initiatives/samskruthi.png"
+                    alt="Samskruti Sahal"
+                    fill
+                    className="object-cover rounded"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">ಸಂಸ್ಕೃತಿ ಸಹಲ್</h3>
+                <p className="text-gray-600 text-md">
+                  Samskruti Sahal celebrates cultural diversity and heritage, inviting individuals
+                  on a journey through traditional arts, music, and history.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -228,7 +267,7 @@ export default function HomePage() {
         <section className="bg-white py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-orange-400 mb-10">
-              News & Stories
+              Stories & Impact
             </h2>
 
             <FeaturedPosts />

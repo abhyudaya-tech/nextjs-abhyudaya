@@ -9,6 +9,7 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'About', href: '/about' },
+    { name: 'Changemakers', href: '/changemakers' },
     { name: 'Initiatives', href: '/initiatives' },
     { name: 'Volunteer', href: '/volunteer' },
     { name: 'Donate', href: '/donate' },

@@ -8,14 +8,14 @@ import JsonLd from './utils/json-ld'
 export const metadata: Metadata = {
   metadataBase: new URL('https://abhyudayafoundation.in'),
   title: 'Abhyudaya Foundation - where passion meets purpose',
-  description: 'Abhyudaya Foundation is a Bengaluru‑based, youth‑led volunteer movement dedicated to fostering a stronger Bharat through cultural revival, civic engagement, and tech‑driven social impact. "Abhyudaya" means "rising" or "upliftment" - reflecting our mission to awaken self‑awareness and shared responsibility among India\'s youth.',
+  description: 'Abhyudaya Foundation is a Bengaluru-based, values-driven social institution committed to nation-building through civic leadership, cultural rootedness, and structured social action. Rooted in Bharatiya civilizational values, the Foundation serves as a platform for designing, governing, and enabling long-term initiatives that strengthen citizenship, community responsibility, and ethical leadership across India. The word Abhyudaya means rising or upliftment — reflecting our belief that national transformation begins with individual consciousness, collective responsibility, and disciplined action.',
   keywords: ['abhyudaya', 'foundation', 'charity', 'seva', 'samskruthi', 'trust', 'bharat', 'culture', 'techforgood', 'youth', 'empowerment', 'nationalism', 'heritage'],
   icons: {
     icon: '/brand/logo_af_square_without_bg.png',
   },
   openGraph: {
     title: 'Abhyudaya Foundation',
-    description: 'Abhyudaya Foundation is a Bengaluru‑based, youth‑led volunteer movement dedicated to fostering a stronger Bharat through cultural revival, civic engagement, and tech‑driven social impact. "Abhyudaya" means "rising" or "upliftment" - reflecting our mission to awaken self‑awareness and shared responsibility among India\'s youth.',
+    description: 'Abhyudaya Foundation is a Bengaluru-based, values-driven social institution committed to nation-building through civic leadership, cultural rootedness, and structured social action. Rooted in Bharatiya civilizational values, the Foundation serves as a platform for designing, governing, and enabling long-term initiatives that strengthen citizenship, community responsibility, and ethical leadership across India. The word Abhyudaya means rising or upliftment — reflecting our belief that national transformation begins with individual consciousness, collective responsibility, and disciplined action.',
     url: 'https://abhyudayafoundation.in/',
     siteName: 'Abhyudaya Foundation',
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Abhyudaya Foundation',
-    description: 'Abhyudaya Foundation is a Bengaluru‑based, youth‑led volunteer movement dedicated to fostering a stronger Bharat through cultural revival, civic engagement, and tech‑driven social impact. "Abhyudaya" means "rising" or "upliftment" - reflecting our mission to awaken self‑awareness and shared responsibility among India\'s youth.',
+    description: 'Abhyudaya Foundation is a Bengaluru-based, values-driven social institution committed to nation-building through civic leadership, cultural rootedness, and structured social action. Rooted in Bharatiya civilizational values, the Foundation serves as a platform for designing, governing, and enabling long-term initiatives that strengthen citizenship, community responsibility, and ethical leadership across India. The word Abhyudaya means rising or upliftment — reflecting our belief that national transformation begins with individual consciousness, collective responsibility, and disciplined action.',
     images: ['/brand/logo_af_without_bg.png'],
   },
   alternates: {

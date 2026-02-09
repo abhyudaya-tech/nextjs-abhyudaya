@@ -39,7 +39,7 @@ export default function JsonLd() {
                                 "@id": "https://abhyudayafoundation.in/",
                                 "url": "https://abhyudayafoundation.in/",
                                 "name": "Abhyudaya Foundation",
-                                "description": "Abhyudaya Foundation is a Bengaluru‑based, youth‑led volunteer movement dedicated to fostering a stronger Bharat through cultural revival, civic engagement, and tech‑driven social impact.",
+                                "description": 'Abhyudaya Foundation is a Bengaluru-based, values-driven social institution committed to nation-building through civic leadership, cultural rootedness, and structured social action. Rooted in Bharatiya civilizational values, the Foundation serves as a platform for designing, governing, and enabling long-term initiatives that strengthen citizenship, community responsibility, and ethical leadership across India. The word Abhyudaya means rising or upliftment — reflecting our belief that national transformation begins with individual consciousness, collective responsibility, and disciplined action.',
                                 "inLanguage": "en-US"
                             }
                         ]

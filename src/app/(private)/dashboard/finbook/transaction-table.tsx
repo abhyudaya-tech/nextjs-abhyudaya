@@ -170,10 +170,10 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
                             <button onClick={() => setSelectedAccount(null)} className={`px-4 py-2 rounded-lg text-sm font-medium transition ${selectedAccount === null ? 'bg-orange-500 text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
                                 All Accounts
                             </button>
-                            <button onClick={() => setSelectedAccount('Official - Canara')} className={`px-4 py-2 rounded-lg text-sm font-medium transition ${selectedAccount === 'Official - Canara' ? 'bg-orange-500 text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
+                            <button onClick={() => setSelectedAccount('official_canara')} className={`px-4 py-2 rounded-lg text-sm font-medium transition ${selectedAccount === 'official_canara' ? 'bg-orange-500 text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
                                 Official - Canara
                             </button>
-                            <button onClick={() => setSelectedAccount('Private - PayTM')} className={`px-4 py-2 rounded-lg text-sm font-medium transition ${selectedAccount === 'Private - PayTM' ? 'bg-orange-500 text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
+                            <button onClick={() => setSelectedAccount('private_paytm')} className={`px-4 py-2 rounded-lg text-sm font-medium transition ${selectedAccount === 'private_paytm' ? 'bg-orange-500 text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
                                 Private - PayTM
                             </button>
                         </div>
