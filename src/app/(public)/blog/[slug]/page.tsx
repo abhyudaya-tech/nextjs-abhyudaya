@@ -56,8 +56,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <img
                             src={imageUrl}
                             alt={post.title}
-                            className="w-full rounded-lg mb-8"
-                            style={{ maxHeight: 400, objectFit: "cover" }}
+                            className="w-auto rounded-lg mb-8 mx-auto"
+                            style={{ maxHeight: 400, objectFit: "fill" }}
                         />
                     )}
 

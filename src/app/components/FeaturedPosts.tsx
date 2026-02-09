@@ -36,7 +36,7 @@ export default async function FeaturedPosts() {
               src={urlFor(post.mainImage ?? '/placeholder.png')}
               alt={post.title}
               fill
-              className="object-cover"
+              className="object-fill object-top"
             />
           </div>
           <div className="p-4">
